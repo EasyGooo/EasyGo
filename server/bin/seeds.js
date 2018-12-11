@@ -29,6 +29,7 @@ const users = [
   {
     username: 'admin',
     password: bcrypt.hashSync('admin', bcrypt.genSaltSync(bcryptSalt)),
+    email: "admin@admin.com"
   },
   {
     username: 'admin1',
