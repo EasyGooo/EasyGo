@@ -13,8 +13,8 @@ const bcryptSalt = 10;
 const profileRouter = express.Router();
 
 
-profileRouter.get('/profile', ensureLoggedIn('/auth/login'), (req, res, next) => {
-  res.json();
+profileRouter.get('/profile', (req, res, next) => {
+  res.json({"hola": true});
 });
 
 
@@ -45,3 +45,5 @@ profileRouter.post('/profile', [ensureLoggedIn('/auth/login'), uploadCloud.singl
     .then(() => res.redirect('/profile'))
     .catch(err => console.log(`${err} in profile/settings`));
 });
+
+module.exports = profileRouter;
