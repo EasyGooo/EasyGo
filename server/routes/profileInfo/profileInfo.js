@@ -13,12 +13,13 @@ const bcryptSalt = 10;
 const profileRouter = express.Router();
 
 
-profileRouter.get('/profile', (req, res, next) => {
-  res.json({"hola": true});
+
+profileRouter.get('/settings', (req, res, next) => {
+  res.json();
 });
 
 
-profileRouter.post('/profile', [ensureLoggedIn('/auth/login'), uploadCloud.single('photo')], (req, res, next) => {
+profileRouter.post('/settings', [ensureLoggedIn('/auth/login'), uploadCloud.single('photo')], (req, res, next) => {
   const userId = req.body.userid;
   const myUser = {};
 

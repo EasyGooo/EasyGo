@@ -5,6 +5,7 @@ import Login from "./components/auth/Login";
 import Message from "./components/Message";
 import AuthService from "./components/auth/AuthService";
 import { Route, Link } from "react-router-dom";
+import ProfileInfo from "./components/ProfileInfo/ProfileInfo";
 
 class App extends Component {
   constructor() {
@@ -45,7 +46,7 @@ class App extends Component {
       <div>
         <p>No user</p>
         <Link to="/">Home</Link> - <Link to="/signup">Signup</Link> -{" "}
-        <Link to="/login">Login</Link>
+        <Link to="/login">Login</Link>-<Link to="/profile">Profile</Link>
       </div>
     );
 
@@ -53,11 +54,9 @@ class App extends Component {
       <div className="App">
         {welcome}
         <Message user={this.state.user} />
-        <Route
-          path="/signup"
-          render={() => <Signup getUser={this.getUser} />}
-        />
+        <Route path="/signup" render={() => <Signup getUser={this.getUser} />}/>
         <Route path="/login" render={() => <Login getUser={this.getUser} />} />
+
       </div>
     );
   }
