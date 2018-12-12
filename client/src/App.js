@@ -44,7 +44,7 @@ class App extends Component {
 
         <button onClick={this.logout}>Logout</button>
 
-        < 
+         
       </div>
     ) : (
       <div>
