@@ -6,6 +6,12 @@
     "axios": "^0.18.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-google-autocomplete": "^1.0.18",
+    "react-google-maps": "^9.4.5",
+    "react-native": "^0.57.7",
+    "react-native-maps": "^0.22.1",
+    "react-native-maps-directions": "^1.6.0",
+    "react-places-autocomplete": "^7.2.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1"
   },
