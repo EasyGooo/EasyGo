@@ -24,11 +24,12 @@ export default class Login extends Component {
 
   handleChange = (e) => {
     const {name, value} = e.target;
-
     this.setState({[name]: value});
   }
 
+
   render() {
+    console.log(this.props)
     return (
       <div>
         <h2>Login</h2>
