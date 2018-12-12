@@ -41,7 +41,7 @@ export default class ProfileInfo extends Component {
           <label>Password</label>
           <input type="password" name="password" onChange={e => this.handleChange(e)} />
 
-          <label>Password</label>
+          <label>Email</label>
           <input type="text" name="email" onChange={e => this.handleChange(e)} />
 
           <input type="submit" value="Change"/>

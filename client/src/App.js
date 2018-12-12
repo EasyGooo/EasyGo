@@ -6,13 +6,14 @@ import Message from "./components/Message";
 import AuthService from "./components/auth/AuthService";
 import { Route, Link } from "react-router-dom";
 import ProfileInfo from "./components/ProfileInfo/ProfileInfo";
-
+import GoogleMapsComponent from './components/Mapas/GoogleMapsComponent'
+import Mapas from './components/Mapas/Mapas'
 class App extends Component {
   constructor() {
     super();
 
     this.state = {
-      user: null
+      user: null,
     };
 
     this.authService = new AuthService();
@@ -56,7 +57,15 @@ class App extends Component {
         <Message user={this.state.user} />
         <Route path="/signup" render={() => <Signup getUser={this.getUser} />}/>
         <Route path="/login" render={() => <Login getUser={this.getUser} />} />
-
+        <Route path="/profile" render={() => <ProfileInfo getUser={this.getUser} />} />
+        {/* <GoogleMapsComponent
+        currentLatitude={-22.923049} 
+        currentLongitude={-43.373979}
+        destinationLatitude={-22.997345}
+        destinationLongitude={-43.358052}
+    /> */}
+    <Mapas/>
+     
       </div>
     );
   }
