@@ -7,7 +7,7 @@ import Home from "./components/Home/Home.js";
 import AuthService from "./components/auth/AuthService";
 import { Route, Link, Switch, Redirect, Router } from "react-router-dom";
 import ProfileInfo from "./components/ProfileInfo/ProfileInfo";
-import GoogleMapsComponent from './components/Mapas/GoogleMapsComponent'
+
 import Mapas from './components/Mapas/Mapas'
 class App extends Component {
   constructor() {
@@ -64,8 +64,8 @@ class App extends Component {
           <Route path="/signup" render={() => <Signup getUser={this.getUser} />}/>
           <Route path="/profile" render={() => <ProfileInfo getUser={this.getUser} />} />
         </Switch>
+  
     <Mapas/>
-     
 
       </div>
     );
