@@ -3,7 +3,7 @@ import axios from "axios";
 class AuthService {
   constructor() {
     this.service = axios.create({
-      baseURL: "http://localhost:5000/api",
+      baseURL: "http://localhost:5000/api/auth",
       withCredentials: true
     })
   }
@@ -12,7 +12,7 @@ class AuthService {
     const formData = new FormData();
     Object.keys(user).forEach(key => formData.append(key, user[key]));
 
-    return this.service.post('/auth/signup', formData, {
+    return this.service.post('/signup', formData, {
         headers: {
           "Content-Type": "multipart/form-data"
         }
@@ -21,12 +21,12 @@ class AuthService {
   }
 
   login = (user) => {
-    return this.service.post('/auth/login', user)
+    return this.service.post('/login', user)
     .then(response => response.data)
   }
 
   change = (user) => {
-    return this.service.post('/profile/settings', user)
+    return this.service.post('/settings', user)
     .then(response => response.data)
   }
 

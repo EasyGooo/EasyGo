@@ -56,7 +56,7 @@ export default class Signup extends Component {
           <label>Photo</label>
           <input type="file" name="photo" onChange={e => this.handleChange(e)} />
 
-          <input type="submit" value="Signup"/>
+          <input type="submit" value="signup"/>
         </form>
       </div>
     )
