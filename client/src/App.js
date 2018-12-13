@@ -6,9 +6,15 @@ import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
 import Home from "./components/sections/Home/Home.js";
 import AuthService from "./components/auth/AuthService";
+<<<<<<< HEAD
 import ProfileInfo from "./components/sections/ProfileInfo/ProfileInfo";
 import Join from './components/sections/Join/Join.js'
 import Create from './components/sections/Create/Create.js'
+=======
+import { Route, Link, Switch, Redirect, Router } from "react-router-dom";
+import ProfileInfo from "./components/ProfileInfo/ProfileInfo";
+
+>>>>>>> 0ba6f71e005ffe6655197213d7a4f458d39ce2df
 import Mapas from './components/Mapas/Mapas'
 class App extends Component {
   constructor() {
@@ -69,8 +75,8 @@ class App extends Component {
           <Route path="/signup" render={() => <Signup getUser={this.getUser} />}/>
           <Route path="/profile" render={() => <ProfileInfo getUser={this.getUser} />} />
         </Switch>
-    {/* <Mapas/> */}
-     
+  
+    <Mapas/>
 
       </div>
     );

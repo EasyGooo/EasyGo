@@ -36,7 +36,79 @@ const users = [
     password: bcrypt.hashSync('admin1', bcrypt.genSaltSync(bcryptSalt)),
   },
 ];
-
+const companies = [
+  {
+    name:"Daikin AC Spain S.A",
+    address:"C/ Vía de los Poblados, 1",
+    position:{
+        lat:40.476060,
+        lng:-3.636175
+    }
+  },
+  {
+    name:"Aegon Seguros",
+    address:"C/ Vía de los Poblados, 3",
+    position:{
+        lat:40.476928,
+        lng:-3.633420
+    }
+  },
+  {
+    name:"Iberdrola S.A.",
+    address:"C/ Tomás Redondo, 1",
+    position:{
+        lat:40.473070,
+        lng:-3.630874
+    }
+  },
+  {
+    name:"Plenilunio",
+    address:"C/ Aracne,s/n",
+    position:{
+        lat:40.446991,
+        lng:-3.587365
+    }
+  },
+  {
+    name:"Altran España",
+    address:"C/ Campezo,1",
+    position:{
+        lat:40.448591,
+        lng:-3.581882
+    }
+  },
+  {
+    name:"Madrid Marriott Auditorium",
+    address:"Avenida de Aragón 400",
+    position:{
+        lat:40.448315,
+        lng:-3.558665
+    }
+  },
+];
+const startpoints = [
+  {
+    address:"C/ Lombía, 1",
+    position:{
+        lat:40.426020,
+        lng:-3.672502
+    }
+  },
+  {
+    address:"C/ Alcalá, 150",
+    position:{
+        lat:40.427685,
+        lng:-3.669478
+    }
+  },
+  {
+    address:"C/ Conde de Peñalver, 15",
+    position:{
+        lat:40.426371,
+        lng:-3.675635
+    }
+  },
+]
 User.create(users)
   .then((usersCreated) => {
     console.log(`${usersCreated.length} users created with the following id:`);
