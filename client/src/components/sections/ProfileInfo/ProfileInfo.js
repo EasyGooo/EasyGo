@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import AuthService from '../auth/AuthService';
-
+import AuthService from '../../auth/AuthService';
+import Nav from '../../Nav/Nav.js'
 export default class ProfileInfo extends Component {
   constructor() {
     super();
@@ -33,7 +33,8 @@ export default class ProfileInfo extends Component {
   render() {
     return (
       <div>
-        
+         <Nav />
+         <h1>PROFILE</h1>
          <form onSubmit={this.handleFormSubmit}>
           <label>Username</label>
           <input type="text" name="username" onChange={e => this.handleChange(e)} />

@@ -11,15 +11,7 @@ export default class nav extends Component {
 
   render() {
     return (
-      <div>
-        {/* <Link to="/">Home</Link> - 
-
-        <Link to="/signup">Signup</Link>-
-
-        <Link to="/login">Login</Link>-
-
-        <Link to="/profile">Profile</Link> */}
-
+      <div className="nav-block" >
         <nav className="menu">
           <input
             type="checkbox"
@@ -34,7 +26,7 @@ export default class nav extends Component {
             <span className="hamburger hamburger-3" />
           </label>
 
-          <Link to="/" className="menu-item">
+          <Link to="/home" className="menu-item">
             {" "}
             <i className="fa fa-home"></i>{" "}
           </Link>
@@ -42,13 +34,13 @@ export default class nav extends Component {
             {" "}
             <i className="fa fa-user" />{" "}
           </Link>
-          <Link to="#" className="menu-item">
+          <Link to="/create" className="menu-item">
             {" "}
             <i className="fa fa-plus" />{" "}
           </Link>
-          <Link to="#" className="menu-item">
+          <Link to="/join" className="menu-item">
             {" "}
-            <i className="fa fa-car" />{" "}
+            <i className="fa fa-search" />{" "}
           </Link>
           
         </nav>

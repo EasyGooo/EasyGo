@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Nav from '../Nav/Nav.js'
+import Nav from '../../Nav/Nav.js'
 
 export default class Home extends Component {
   constructor(props) {
@@ -14,7 +14,9 @@ export default class Home extends Component {
     console.log("Holita Pepe")
     return (
       <div>
+         
         <Nav />
+        <h1>HOME</h1>
       </div>
     )
   }
