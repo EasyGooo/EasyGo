@@ -5,8 +5,8 @@ const {
 } = mongoose;
 
 
-const CompanySchema = new Schema({
-  name: String,
+const StartPointSchema = new Schema({
+
   address: String,
   position: {
     lat:Number,
@@ -14,5 +14,5 @@ const CompanySchema = new Schema({
   }
 });
 
-const Company = mongoose.model('Company', CompanySchema);
-module.exports = Car;
+const StartPoint= mongoose.model('StartPoint', StartPointSchema);
+module.exports = StartPoint;

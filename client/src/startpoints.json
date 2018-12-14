@@ -1,0 +1,5 @@
+[
+{"_id":{"$oid":"5c1282fe1dad4c757895c3db"},"address":"C/ Lombía, 1","position":{"lat":{"$numberDouble":"40.42602"},"lng":{"$numberDouble":"-3.672502"}}},
+{"_id":{"$oid":"5c1282fe1dad4c757895c3dc"},"address":"C/ Alcalá, 150","position":{"lat":{"$numberDouble":"40.427685"},"lng":{"$numberDouble":"-3.669478"}}},
+{"_id":{"$oid":"5c1282fe1dad4c757895c3dd"},"address":"C/ Conde de Peñalver, 15","position":{"lat":{"$numberDouble":"40.426371"},"lng":{"$numberDouble":"-3.675635"}}}
+]

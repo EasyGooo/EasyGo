@@ -1,0 +1,9 @@
+
+[
+    {"_id":{"$oid":"5c1282fe1dad4c757895c3d5"},"name":"Daikin AC Spain S.A","address":"C/ Vía de los Poblados, 1","position":{"lat":{"$numberDouble":"40.47606"},"lng":{"$numberDouble":"-3.636175"}}},
+{"_id":{"$oid":"5c1282fe1dad4c757895c3d6"},"name":"Aegon Seguros","address":"C/ Vía de los Poblados, 3","position":{"lat":{"$numberDouble":"40.476928"},"lng":{"$numberDouble":"-3.63342"}}},
+{"_id":{"$oid":"5c1282fe1dad4c757895c3d7"},"name":"Iberdrola S.A.","address":"C/ Tomás Redondo, 1","position":{"lat":{"$numberDouble":"40.47307"},"lng":{"$numberDouble":"-3.630874"}}},
+{"_id":{"$oid":"5c1282fe1dad4c757895c3d8"},"name":"Plenilunio","address":"C/ Aracne,s/n","position":{"lat":{"$numberDouble":"40.446991"},"lng":{"$numberDouble":"-3.587365"}}},
+{"_id":{"$oid":"5c1282fe1dad4c757895c3d9"},"name":"Altran España","address":"C/ Campezo,1","position":{"lat":{"$numberDouble":"40.448591"},"lng":{"$numberDouble":"-3.581882"}}},
+{"_id":{"$oid":"5c1282fe1dad4c757895c3da"},"name":"Madrid Marriott Auditorium","address":"Avenida de Aragón 400","position":{"lat":{"$numberDouble":"40.448315"},"lng":{"$numberDouble":"-3.558665"}}}
+]

@@ -6,7 +6,8 @@
 require('dotenv').config();
 
 const User = require('../models/User');
-
+const Company = require('../models/Company')
+const StartPoint = require('../models/StartPoint')
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
@@ -113,6 +114,33 @@ User.create(users)
   .then((usersCreated) => {
     console.log(`${usersCreated.length} users created with the following id:`);
     console.log(usersCreated.map(u => u._id));
+  })
+  .then(() => {
+  // Close properly the connection to Mongoose
+    mongoose.disconnect();
+  })
+  .catch((err) => {
+    mongoose.disconnect();
+    throw err;
+  });
+
+Company.create(companies)
+  .then((companiesCreated) => {
+    console.log(`${companiesCreated.length} companies created `);
+    console.log(companiesCreated.map(u => u._id));
+  })
+  .then(() => {
+  // Close properly the connection to Mongoose
+    mongoose.disconnect();
+  })
+  .catch((err) => {
+    mongoose.disconnect();
+    throw err;
+  });
+StartPoint.create(startpoints)
+  .then((startpointsCreated) => {
+    console.log(`${startpointsCreated.length} startpoints created `);
+    console.log(startpointsCreated.map(u => u._id));
   })
   .then(() => {
   // Close properly the connection to Mongoose
