@@ -1,3 +1,4 @@
+import "./_map.scss";
 import React, { Component } from 'react'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 import AutocompleteStart from './AutocompleteStart';
@@ -68,8 +69,8 @@ export default class Mapas extends Component {
             withProps({
                 googleMapURL: `https://maps.googleapis.com/maps/api/js?key=AIzaSyB-P5Wpth-cMCDmm_TFPev1gWaoqhYAYpQ&v=3.exp&libraries=geometry,drawing,places`,
                 loadingElement: <div style={{ height: `100%` }} />,
-                containerElement: <div style={{ height: `400px` }} />,
-                mapElement: <div style={{ height: `100%` }} />,
+                containerElement: <div  style={{ height: `400px` , width: `600px`}} />,
+                mapElement: <div className="map" style={{ height: `100%` }} />,
             }),
             withScriptjs,
             withGoogleMap,

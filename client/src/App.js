@@ -5,12 +5,11 @@ import { Route, Link, Switch, Redirect, Router } from "react-router-dom";
 import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
 import Home from "./components/sections/Home/Home.js";
-import AuthService from "./components/auth/AuthService";
+import AuthService from "./Service/AuthService";
 import ProfileInfo from "./components/sections/ProfileInfo/ProfileInfo";
 import Join from './components/sections/Join/Join.js'
 import Create from './components/sections/Create/Create.js'
 
-import Mapas from './components/Mapas/Mapas'
 class App extends Component {
   constructor() {
     super();
@@ -60,7 +59,7 @@ class App extends Component {
 
     return (
       <div className="App">
-
+ {welcome}
         {/* <p>Hola {this.state.user.username}</p> */}
         <Switch>
           <Route exact path="/" render={() => <Login getUser={this.getUser} />} />
@@ -71,8 +70,7 @@ class App extends Component {
           <Route path="/profile" render={() => <ProfileInfo getUser={this.getUser} />} />
         </Switch>
   
-    <Mapas/>
-
+    
       </div>
     );
   }

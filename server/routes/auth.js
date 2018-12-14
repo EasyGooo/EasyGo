@@ -2,7 +2,7 @@ const express = require("express");
 const passport = require('passport');
 const authRoutes = express.Router();
 const User = require("../models/User");
-const uploadCload = require("../config/cloudinary");
+const uploadCloud = require("../config/cloudinary");
 
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
@@ -11,21 +11,29 @@ const bcryptSalt = 10;
 
 authRoutes.post("/login", function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
-    if (err) { return res.status(500).json({message: "Error login"}) }
+    if (err) { 
+      return res.status(500).json({message: "Error login"}
+      
+      ) }
+      
     if (!user) { return res.status(500).json({message: "Error login"}) }
 
     req.logIn(user, function(err) {
-      if (err) { return res.status(500).json({message: "Error login"}) }
+      if (err) {
+        console.log(err)
+        return res.status(500).json({message: "Error login"}) }
       return res.status(200).json(user);
     });
   })(req, res, next);
 });
 
 
-authRoutes.post("/signup", uploadCload.single("photo"), (req, res, next) => {
-  const { username, password } = req.body;
-  const pictureUrl = req.file.url;
+authRoutes.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
+  const { username, password, email } = req.body;
+  const imgPath = req.file.url;
 
+  // console.log(req.file.url);
+  console.log(imgPath);
   
   if (username === "" || password === "") {
     res.status(500).json({ message: "Indicate username and password" });
@@ -44,24 +52,18 @@ authRoutes.post("/signup", uploadCload.single("photo"), (req, res, next) => {
     const newUser = new User({
       username,
       password: hashPass,
-      pictureUrl
+      imgPath,
+      email
     });
 
-    newUser.save((err, user) => {
-      if (err) {
-        res.status(500).json({ message: "Something went wrong" });
-      } else {
-        req.login(user, (err) => {
-
-          if (err) {
-              res.status(500).json({ message: 'Login after signup went bad.' });
-              return;
-          }
-
-          res.status(200).json(user);
-      });
-      }
-    });
+    newUser.save()
+    .then(user => {
+      res.status(200).json(user)
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({message:"Something went wrong"})
+    })
   });
 });
 
