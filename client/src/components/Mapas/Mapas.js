@@ -1,5 +1,5 @@
+import "./_map.scss";
 import React, { Component } from 'react'
-
 import AutocompleteStart from './AutocompleteStart';
 import AutocompleteEnd from './AutocompleteEnd';
 require ('dotenv').config();
@@ -45,10 +45,10 @@ export default class Mapas extends Component {
 
         const MapWithADirectionsRenderer = compose(
             withProps({
-                googleMapURL: `https://maps.googleapis.com/maps/api/js?key=AIzaSyAsgK9PPQmDSHf-goNS4JqqG-OMGSiTnpo&v=3.exp&libraries=geometry,drawing,places`,
+                googleMapURL: `https://maps.googleapis.com/maps/api/js?key=AIzaSyB-P5Wpth-cMCDmm_TFPev1gWaoqhYAYpQ&v=3.exp&libraries=geometry,drawing,places`,
                 loadingElement: <div style={{ height: `100%` }} />,
-                containerElement: <div style={{ height: `400px` }} />,
-                mapElement: <div style={{ height: `100%` }} />,
+                containerElement: <div  style={{ height: `400px` , width: `600px`}} />,
+                mapElement: <div className="map" style={{ height: `100%` }} />,
             }),
             withScriptjs,
             withGoogleMap,

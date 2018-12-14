@@ -15,4 +15,4 @@ const CompanySchema = new Schema({
 });
 
 const Company = mongoose.model('Company', CompanySchema);
-module.exports = Car;
+module.exports = Company;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AuthService from './AuthService';
+import AuthService from '../../Service/AuthService';
 
 export default class Login extends Component {
   constructor() {

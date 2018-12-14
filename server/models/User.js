@@ -1,7 +1,4 @@
 require('dotenv').config();
-require('./Car');
-require('./Journey');
-require('./Valuation');
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 

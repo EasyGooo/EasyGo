@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import AuthService from '../../auth/AuthService';
+import AuthService from '../../../Service/AuthService.js';
 import Nav from '../../Nav/Nav.js'
 export default class ProfileInfo extends Component {
   constructor() {
