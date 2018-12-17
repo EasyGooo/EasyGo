@@ -1,0 +1,184 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300" );
+
+.loginSignupBody {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100wh;
+	height: 100vh;
+	color: #fff;
+	background: linear-gradient(-45deg, rgb(7, 214, 135), rgb(68, 245, 201), rgb(74, 184, 224), rgb(115, 220, 252));
+	background-size: 400% 400%;
+	animation: Gradient 15s ease infinite;
+	padding-top: 15rem;
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+
+
+.logo{
+	height: 13rem;
+	width: 13rem;
+	margin-bottom: -60px;
+}
+.button{
+	width: 300px;
+	height: 50px;
+	border-radius: 25px;
+	text-decoration: none;
+	text-align: center;
+	line-height: 50px;
+	font-size: 20px;
+	margin-top: 50px;
+	font-family: 'Quicksand', sans-serif;
+
+}
+
+.btn-log{
+color: white;
+border: 1px solid white;
+cursor: pointer;
+}
+.btn-log:hover{
+	color: rgb(74, 184, 224);
+	background-color: white;
+	cursor: pointer;
+	transition: 1s ease-in-out;
+	}
+	
+
+.btn-sign{	
+color: rgb(74, 184, 224);
+background-color: white;
+cursor: pointer;
+}
+
+.btn-sign:hover{	
+	color: white;
+	background-color: transparent;
+	border: 1px solid white;
+	transition: 1s ease-in-out;
+	}
+	.easy-go{
+		font-family: 'Quicksand', sans-serif;
+		font-size: 40px;
+		margin-bottom: 2rem;
+		font-weight: 100;
+
+	}
+	.center-form{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-top: 6rem;
+	}
+
+	.inputs-form{
+
+		min-width: 25rem;
+		height: 50px;
+		border-radius: 25px;
+		background-color: transparent;
+		border: 1px solid white;
+		margin-top: 35px;
+		outline: none;
+		padding-left: 1.5rem; 
+		color: white;
+		font-size: 17px;
+		
+	}
+
+	.inputs-form::placeholder { 
+		color: white;
+		font-size: 17px; 
+ }
+ .submit-log{
+	color: rgb(74, 184, 224);
+	background-color: white;
+	border: none;
+	cursor: pointer;
+	width: 300px;
+	height: 50px;
+	border-radius: 25px;
+	text-decoration: none;
+	text-align: center;
+	line-height: 50px;
+	font-size: 20px;
+	margin-top: 50px;
+	font-family: 'Quicksand', sans-serif;
+	outline: none;
+	transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+ }
+ .submit-log:hover{
+	transform:scale(1.1);
+	transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+ }
+ .button-circle {
+  
+  $bem-block: &;
+  
+  border: none;
+  background-color:white;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  position: relative;
+  padding: 0;
+  outline: none;
+  overflow: hidden;
+  cursor: pointer;
+ transform:rotate(180deg);
+ font-size: 30px;
+
+  
+  
+  &:hover #{$bem-block}__icon {
+    animation-name: walk;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+  }
+  
+  &__icon {
+    color:rgb(74, 184, 224) ;
+    line-height: 40px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes walk {
+  0% {
+    left: 0%;
+  }
+  
+  50% {
+    left: 50%;
+  }
+  
+  100% {
+    left: 130%;
+  }
+  
+}
+.back-btn{
+	position: fixed;
+	top:0;
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	padding: 3rem 0 0 6rem;
+}

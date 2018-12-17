@@ -1,34 +1,30 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const {
-  Schema,
-} = mongoose;
+const { Schema } = mongoose;
 
 const JourneySchema = new Schema({
- 
-  startPoint:{
-  address: String,
-  position: {
-    lat:Number,
-    lng:Number
-  }
-},
-  endPoint:{
-  address: String,
-  position: {
-    lat:Number,
-    lng:Number
-  }
-},
+  startPoint: {
+      lat: Number,
+      lng: Number
+    
+  },
+  endPoint: {
+      lat: Number,
+      lng: Number
+    
+  },
   company: String,
   places: Number,
   date: String,
-  hour: String,
+  time: String,
+  description: String,
+  distance:Number,
+  duration:Number,
   authorId: {
-  type: Schema.Types.ObjectId,
-  ref: 'User',
-}
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  }
 });
 
-const Journey = mongoose.model('Journey', JourneySchema);
+const Journey = mongoose.model("Journey", JourneySchema);
 module.exports = Journey;

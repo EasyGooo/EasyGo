@@ -13,10 +13,15 @@ class JourneyService{
     return this.service.get('/companies')
     .then(response => response.data)
   }
-  userJourneys = () => {
+  userJourneysAccess = () => {
     return this.service.get('/journeys/create')
     .then(response => response.data)
   }
+  userJourneysCreate = (data) => {
+    return this.service.post('/create',data)
+    .then(response => response.data)
+  }
+
   userCars = ()=> {
     return this.service.post('/journeys/car')
     .then(response => response.data)

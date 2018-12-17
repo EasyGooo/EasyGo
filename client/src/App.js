@@ -9,6 +9,7 @@ import AuthService from "./Service/AuthService";
 import ProfileInfo from "./components/sections/ProfileInfo/ProfileInfo";
 import Join from './components/sections/Join/Join.js'
 import Create from './components/sections/Create/Create.js'
+import LoginSignup from './components/sections/LoginSignup/LoginSignup.js'
 
 class App extends Component {
   constructor() {
@@ -40,12 +41,13 @@ class App extends Component {
   };
 
   render() {
+
     const welcome = this.state.user ? (
       <div>
-        <p>Hola {this.state.user.username}</p>
-        <p>Hola {this.state.user.email}</p>
-
-        <button onClick={this.logout}>Logout</button>
+        
+ 
+       
+        <button className='logout' onClick={this.logout}>Logout</button>
 
         <Redirect to='/home' />
 
@@ -53,7 +55,7 @@ class App extends Component {
       </div>
     ) : (
       <div>
-        <p>No user</p>
+        <Redirect to='/' />
       </div>
     );
 
@@ -62,12 +64,14 @@ class App extends Component {
  {welcome}
         {/* <p>Hola {this.state.user.username}</p> */}
         <Switch>
-          <Route exact path="/" render={() => <Login getUser={this.getUser} />} />
+          <Route exact path="/singup" render={() => <Signup getUser={this.getUser} />} />  
+          <Route exact path="/login" render={() => <Login getUser={this.getUser} />} />  
+          <Route exact path="/" render={() => <LoginSignup getUser={this.getUser} />} />
           <Route path="/home" component={Home}/>
-          <Route path="/join" component={Join}/>
+          <Route path="/join" render={() => <Join getUser={this.getUser} />} />  
           <Route path="/create" component={Create}/>
           <Route path="/signup" render={() => <Signup getUser={this.getUser} />}/>
-          <Route path="/profile" render={() => <ProfileInfo getUser={this.getUser} />} />
+          <Route path="/profile" render={() => <ProfileInfo image={this.state.user.imgPath} getUser={this.getUser} />} />
         </Switch>
   
     

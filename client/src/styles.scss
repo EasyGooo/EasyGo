@@ -1,1 +1,8 @@
 @import "components/Nav/_nav.scss";
+@import "./components/sections/LoginSignup/_LoginSignup.scss";
+@import "./components/sections/Create/_Create.scss";
+@import "./components/sections/ProfileInfo/ProfileInfo.scss";
+.logout{
+  left: 500px;
+  position: absolute;
+}

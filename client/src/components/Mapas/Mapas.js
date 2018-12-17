@@ -11,48 +11,33 @@ export default class Mapas extends Component {
         super(props)
 
         this.state = {
-            coorstart: null,
-            coorend: null,
+            start: null,
+            end: null,
             position: { lat: 40.416947, lng: -3.703523 },
             companies,
-            startpoints
+            startpoints,
+
         }
     }
 
 
     updateCoorstart = (coorstart) => {
         this.setState({ ...this.state, coorstart })
+        this.props.startPoint(coorstart)
     }
     updateCoorend = (coorend) => {
         this.setState({ ...this.state, coorend })
-    }
-    handleFormSubmit = (e) => {
-        e.preventDefault();
-
-        const { latLng } = this.state;
-        this.change({ latLng })
-            .then(user => this.props.getUser(user));
+        this.props.endPoint(coorend)
+        this.props.distance(this.state.distance)
     }
 
-    handleChange = (e) => {
-        const { name, value } = e.target;
-
-        this.setState({ [name]: value });
+    handleInfo = () => {
+        let coord = this.state.coorstart;
+        this.props.infoMaps(coord)
     }
-    closeToStartPoint = (startpoint) => {
-        this.state.companies.map((startpoint, i) => {
-            const a = new this.props.google.maps.LatLng(startpoint.position.lat.$numberDouble, startpoint.position.lng.$numberDouble);
-            console.log(a)
-            const b = new this.props.google.maps.LatLng(this.state.coordstart.lat, this.state.coordstart.lng);
-            console.log(this.props.google.maps.geometry.spherical.computeDistanceBetween(a, b));
-            if (this.props.google.maps.geometry.spherical.computeDistanceBetween(a, b) <= 1000) {
-                return true
-            } else {
-                return false
-            }
-        })}
+    
     render() {
-        console.log(this.state.companies)
+    
         const coorstart = this.state.coorstart;
         const coorend = this.state.coorend;
         const { compose, withProps, lifecycle } = require("recompose");
@@ -90,11 +75,16 @@ export default class Mapas extends Component {
                                     distance: result.routes[0].legs[0].distance.text,
                                     duration: result.routes[0].legs[0].duration.text,
                                     start_point: result.routes[0].legs[0].start_address,
-                                    end_address: result.routes[0].legs[0].end_address,
+                                    start_location_lat:result.routes[0].legs[0].start_location.lat(),
+                                    start_location_lng:result.routes[0].legs[0].start_location.lng(),
+                                    end_point: result.routes[0].legs[0].end_address,
+                                    end_location_lat:result.routes[0].legs[0].end_location.lat(),
+                                    end_location_lng:result.routes[0].legs[0].end_location.lng(),
 
                                 }, () => {
                                     let precio = parseFloat(this.state.distance) * (6 / 100) * 1.3 * 2 + " €"
                                     console.log(precio)
+                                    console.log(this.state)
                                 })
 
                             } else {
@@ -114,25 +104,28 @@ export default class Mapas extends Component {
                 {props.directions && <DirectionsRenderer directions={props.directions} duration={props.duration} distance={props.distance} />}
                 {this.state.companies.map((company, i) => { return <Marker key={i} position={{ lat: +company.position.lat.$numberDouble, lng: +company.position.lng.$numberDouble }} /> })}
 
-        {this.state.startpoints.map((startpoint, i) => { 
-            if (this.closeToStartPoint(startpoint)) return <Marker key={i} position={{ lat: +startpoint.position.lat.$numberDouble, lng: +startpoint.position.lng.$numberDouble }} /> })}
+        {/* {this.state.startpoints.map((startpoint, i) => { 
+            if (this.closeToStartPoint(startpoint)) return <Marker key={i} position={{ lat: +startpoint.position.lat.$numberDouble, lng: +startpoint.position.lng.$numberDouble }} /> })} */}
 
             </GoogleMap>
         );
 
         return (
             <div>
-                {this.state.companies.map(company => { return <div> {company.name}</div> })}
-
-
-                <AutocompleteStart update={this.updateCoorstart} />
-                <AutocompleteEnd update={this.updateCoorend} />
-
-                <MapWithADirectionsRenderer />
-
                 <div>
-                    <p>{console.log(this.state.duration)}</p>
-                    <p>{this.state.distance}</p>
+                    
+                   
+
+                    
+                    <AutocompleteStart update={this.updateCoorstart} />
+                    <AutocompleteEnd update={this.updateCoorend} />
+
+                    <MapWithADirectionsRenderer />
+
+                    <div>
+                       
+                        <p>{this.state.distance}</p>
+                    </div>
                 </div>
             </div>
 
