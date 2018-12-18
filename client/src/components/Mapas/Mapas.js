@@ -7,7 +7,7 @@ import AutocompleteEnd from './AutocompleteEnd';
 import AutocompleteAsked from './AutocompleteAsked';
 import companies from '../../companies.json'
 import startpoints from '../../startpoints.json'
-import { MapContainer } from "./Currentposition/MapContainer";
+// import { MapContainer } from "./Currentposition/MapContainer";
 const { compose, withProps, lifecycle } = require("recompose");
 // const {
 //     withScriptjs,
@@ -22,12 +22,15 @@ export default class Mapas extends Component {
         super(props)
 
         this.state = {
+            start: null,
+            end: null,
             coorstart: null,
             coorend: null,
             cooAsked:null,
             position: { lat: 40.416947, lng: -3.703523 },
             companies,
-            startpoints
+            startpoints,
+
         }
         this.MapWithADirectionsRenderer=null;
     }
@@ -35,25 +38,20 @@ export default class Mapas extends Component {
 
     updateCoorstart = (coorstart) => {
         this.setState({ ...this.state, coorstart })
+        this.props.startPoint(coorstart)
     }
     updateCoorend = (coorend) => {
         this.setState({ ...this.state, coorend })
+        this.props.endPoint(coorend)
+        this.props.distance(this.state.distance)
     }
     updateCoorAsked = (coorAsked)=>{
         this.setState({ ...this.state, coorAsked })
     }
-    handleFormSubmit = (e) => {
-        e.preventDefault();
 
-        const { latLng } = this.state;
-        this.change({ latLng })
-            .then(user => this.props.getUser(user));
-    }
-
-    handleChange = (e) => {
-        const { name, value } = e.target;
-
-        this.setState({ [name]: value });
+    handleInfo = () => {
+        let coord = this.state.coorstart;
+        this.props.infoMaps(coord)
     }
   
 
@@ -155,11 +153,12 @@ export default class Mapas extends Component {
                 {this.createMap()()}
                
 
-                <div>
-                    <p>{console.log(this.state.duration)}</p>
-                    <p>{this.state.distance}</p>
+                    <div>
+                       
+                        <p>{this.state.distance}</p>
+                    </div>
                 </div>
-            </div>
+            
 
         )
     }
