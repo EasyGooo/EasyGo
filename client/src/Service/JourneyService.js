@@ -14,7 +14,7 @@ class JourneyService{
     .then(response => response.data)
   }
   userJourneysAccess = () => {
-    return this.service.get('/journeys/create')
+    return this.service.get('/journeys')
     .then(response => response.data)
   }
   userJourneysCreate = (data) => {

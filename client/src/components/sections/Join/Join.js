@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import Nav from '../../Nav/Nav.js'
 import AutocompleteStart from '../../Mapas/AutocompleteStart.js'
 import AutocompleteEnd from '../../Mapas/AutocompleteEnd.js'
-import journeys from '../../../journeys.json'
+import JourneyService from '../../../Service/JourneyService.js'
+import axios from 'axios'
 export default class Join extends Component {
  
 constructor(props) {
@@ -11,10 +12,16 @@ constructor(props) {
   this.state = {
     coorstart: null,
     coorend: null,
-    journeys: journeys
+    journeys: null
+
   }
+  this.journeyService = new JourneyService();
 
-
+}
+getJourneys = ()=>{
+  this.journeyService.
+  userJourneysAccess()
+  .then(data=>this.setState({ journeys:data }))
 }
 
 
@@ -28,7 +35,7 @@ endInfo = (coorend) => {
     
 }
 
-getandSortDistance = ()=>{
+filterByDistance = ()=>{
   let staArray=[];
   
   this.state.journeys.forEach((e)=>{
@@ -43,17 +50,24 @@ getandSortDistance = ()=>{
   }console.log(staArray)
 })}
 
+//  sortByCompany = (f) =>{
+//   f.sort(function(a,b){return a.company-b.company});
+//  }
+
+componentDidMount() {
+  this.getJourneys();
+}
+
   render() {
-    console.log(this.state)
+    console.log(this.state.journeys)
   
 const funciona = this.state.coorend==null ?(
     <p>loading...</p>
 ):(
-      console.log(this.getandSortDistance())
+     
+      console.log(this.filterByDistance())
 );
 
-    
-    // console.log(this.state.coorstart,this.state.coorend)
     return (
       <div>
          {funciona}
