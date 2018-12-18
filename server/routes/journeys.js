@@ -2,34 +2,46 @@ const express = require("express");
 const journeysRoutes = express.Router();
 const Journey = require("../models/Journey");
 const Valuation = require("../models/Valuation");
+const User = require("../models/User");
 const Company = require("../models/Company");
 
-journeysRoutes.get('/companies' ,(req,res,next)=>{
-  Company.find()
-  .then(companies=>{
-    res.json(companies)
+journeysRoutes.get('/journeys' ,(req,res,next)=>{
+  Journey.find()
+  .then(journeys=>{
+    res.json(journeys)
   })
 })
 
 journeysRoutes.get('/journeys/:id', (req, res, next) => {
-User.findById(req.params._id)
-.populate("journeys")
+Journey.findById(req.params._id)
 .then(journeys=>{
   res.json({journeys})
 })
   
 });
 
+
+journeysRoutes.get('/myjourneys', (req, res, next) => {
+  Journey.findOne({authorId: req.user.id})
+  .then(journeys=>{
+    res.json({journeys})
+  })
+    
+  });
+
 journeysRoutes.post("/create",(req, res, next) => {
-  const {startPoint,endPoint,company,places,date,hour}=req.body;
+  const {startPoint,endPoint,company,places,date,time,description,distance,duration}=req.body;
   
   const newJourney = new Journey({
     startPoint,
     endPoint,
     company,
+    description,
     places,
     date,
-    hour,
+    time,
+    distance,
+    duration,
     authorId: req.user.id
   }) 
   

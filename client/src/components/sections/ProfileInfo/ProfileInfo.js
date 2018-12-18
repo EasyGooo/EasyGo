@@ -10,6 +10,7 @@ export default class ProfileInfo extends Component {
       password: '',
       email:''
     }
+ 
     this.authService = new AuthService();
   }
 
@@ -34,7 +35,9 @@ export default class ProfileInfo extends Component {
     return (
       <div>
          <Nav />
-         <h1>PROFILE</h1>
+         <header id='profile-header'><h1>PROFILE</h1></header>
+         
+        <img src={this.props.image} alt=""/>   
          <form onSubmit={this.handleFormSubmit}>
           <label>Username</label>
           <input type="text" name="username" onChange={e => this.handleChange(e)} />

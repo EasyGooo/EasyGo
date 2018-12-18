@@ -11,10 +11,8 @@ export default class Home extends Component {
   }
   
   render() {
-    console.log("Holita Pepe")
     return (
-      <div>
-         
+      <div>         
         <Nav />
         <h1>HOME</h1>
       </div>
