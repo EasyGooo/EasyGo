@@ -13,9 +13,12 @@ journeysRoutes.get('/journeys' ,(req,res,next)=>{
 })
 
 journeysRoutes.get('/journeys/:id', (req, res, next) => {
-Journey.findById(req.params._id)
-.then(journeys=>{
-  res.json({journeys})
+  console.log(req.params.id)
+Journey.findById(req.params.id)
+
+.then(journey=>{
+  res.json({journey})
+
 })
   
 });
@@ -30,11 +33,11 @@ journeysRoutes.get('/myjourneys', (req, res, next) => {
   });
 
 journeysRoutes.post("/create",(req, res, next) => {
-  const {startPoint,endPoint,company,places,date,time,description,distance,duration}=req.body;
+  const {coorstart,coorend,company,places,date,time,description,distance,duration}=req.body;
   
   const newJourney = new Journey({
-    startPoint,
-    endPoint,
+    coorstart,
+    coorend,
     company,
     description,
     places,
@@ -71,4 +74,4 @@ journeysRoutes.post("/car",(req, res, next) => {
 })
 
 
-module.exports = journeysRoutes;
+module.exports = journeysRoutes
