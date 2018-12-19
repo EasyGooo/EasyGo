@@ -17,7 +17,7 @@ export default class Join extends Component {
       duration:null,
       startPoint: null,
       endPoint: null,
-      places:5
+      places:3
       
     }
     this.journeyService = new JourneyService();
@@ -53,10 +53,7 @@ distance = (info) =>{
 
 handleChange = (e) => {
   const {name, value} = e.target;
-  this.setState({
-    [name]: value
-  },() => console.log('Updated Creation State:', this.state)
-    );
+  this.setState({...this.state,[name]: value});
 }
   render() {
     
@@ -65,20 +62,9 @@ handleChange = (e) => {
          
          <Nav />
          <h1>Create</h1>
-          <form onSubmit={this.handleFormSubmit}>
-          <input type="text" name="company" placeholder="company name" onChange={e => this.handleChange(e)} /> 
-          <Mapa startPoint={this.startPoint} endPoint={this.endPoint} distance={this.distance}/>               
-          <br/>
           
-          <h3>price</h3>         
-          <input type="date" name="date" placeholder="" onChange={e => this.handleChange(e)} />
-          <input type="time" name="time" onChange={e => this.handleChange(e)} />
-          <input type="text" name="description" placeholder="" onChange={e => this.handleChange(e)} />
+    <Mapa startPoint={this.startPoint} endPoint={this.endPoint} distance={this.distance}/>               
           
-          <button type="submit" value="submit" className="btn"> 
-          submit
-          <div className='ico'><i className="fa fa-paper-plane"></i></div></button>
-        </form>
 
       </div>
     )

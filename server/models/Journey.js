@@ -3,12 +3,12 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const JourneySchema = new Schema({
-  startPoint: {
+  coorstart: {
       lat: Number,
       lng: Number
     
   },
-  endPoint: {
+  coorend: {
       lat: Number,
       lng: Number
     
@@ -18,8 +18,8 @@ const JourneySchema = new Schema({
   date: String,
   time: String,
   description: String,
-  distance:Number,
-  duration:Number,
+  distance:String,
+  duration:String,
   authorId: {
     type: Schema.Types.ObjectId,
     ref: "User"

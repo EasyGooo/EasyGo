@@ -13,7 +13,7 @@ export default class LoginSignup extends Component {
 				<h1 className='easy-go'>easy go</h1>
 
         <Link className='button btn-log' to='/login'>Log in</Link>
-				<Link className='button btn-sign' to='/singup'>Sing up</Link>
+				<Link className='button btn-sign' to='/signup'>Sign up</Link>
 				</div>
 
       </div>

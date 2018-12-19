@@ -8,8 +8,10 @@ import Home from "./components/sections/Home/Home.js";
 import AuthService from "./Service/AuthService";
 import ProfileInfo from "./components/sections/ProfileInfo/ProfileInfo";
 import Join from './components/sections/Join/Join.js'
+import JourneySelected from './components/JourneySelected/JourneySelected.js'
 import Create from './components/sections/Create/Create.js'
 import LoginSignup from './components/sections/LoginSignup/LoginSignup.js'
+import Notifications from './components/sections/Notifications/Notifications.js'
 
 class App extends Component {
   constructor() {
@@ -49,13 +51,13 @@ class App extends Component {
        
         <button className='logout' onClick={this.logout}>Logout</button>
 
-        <Redirect to='/home' />
+ 
 
          
       </div>
     ) : (
       <div>
-        <Redirect to='/' />
+       
       </div>
     );
 
@@ -67,11 +69,13 @@ class App extends Component {
           <Route exact path="/singup" render={() => <Signup getUser={this.getUser} />} />  
           <Route exact path="/login" render={() => <Login getUser={this.getUser} />} />  
           <Route exact path="/" render={() => <LoginSignup getUser={this.getUser} />} />
-          <Route path="/home" component={Home}/>
+          <Route path="/home" render={() => <Home getUser={this.getUser} />}/>
           <Route path="/join" render={() => <Join getUser={this.getUser} />} />  
-          <Route path="/create" component={Create}/>
+          <Route path="/create" render={() => <Create getUser={this.getUser} />}/>
           <Route path="/signup" render={() => <Signup getUser={this.getUser} />}/>
           <Route path="/profile" render={() => <ProfileInfo image={this.state.user.imgPath} getUser={this.getUser} />} />
+          <Route exact path="/journeys/:id" component={JourneySelected}/>
+          <Route exact path="/notifications" render={() => <Notifications getUser={this.getUser} />}/>
         </Switch>
   
     

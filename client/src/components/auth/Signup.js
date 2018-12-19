@@ -40,20 +40,20 @@ export default class Signup extends Component {
 
   render() {
     if(this.state && this.state.redirect) {
-      return <Redirect to="/" />
+      return <Redirect to="/login" />
     }
 
     return (
       <div>
         <h2>Signup</h2>
         <form onSubmit={this.handleFormSubmit}>
-          <label>Username</label>
+        
           <input type="text" name="username" onChange={e => this.handleChange(e)} />
 
-          <label>Password</label>
+         
           <input type="password" name="password" onChange={e => this.handleChange(e)} />
 
-          <label>Photo</label>
+          
           <input type="file" name="photo" onChange={e => this.handleChange(e)} />
 
           <input type="submit" value="signup"/>
