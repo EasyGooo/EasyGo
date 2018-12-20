@@ -29,6 +29,7 @@ export default class Mapas extends Component {
       position: { lat: 40.416947, lng: -3.703523 },
       companies,
       startpoints,
+      places:3,
       map: false,
       places:3,
       redirect:false
@@ -49,7 +50,7 @@ export default class Mapas extends Component {
         this.map = this.createMap(this.comodin, this.state.map)();
     });
     this.props.endPoint(coorend);
-    this.props.distance(this.state.distance);
+    this.props.distance(this.state.distance)
   };
   updateCoorAsked = coorAsked => {
     this.setState({ ...this.state, coorAsked });
@@ -60,9 +61,9 @@ export default class Mapas extends Component {
     this.props.infoMaps(coord);
   };
 
-  comodin = (distance, duration) => {
-      if(this.distance !== distance || this.duration !== duration)
-        this.setState({...this.state, distance, duration, map:true})
+  comodin = (distance, duration,price) => {
+      if(this.distance !== distance || this.duration !== duration )
+        this.setState({...this.state, distance, duration,price, map:true})
   }
 
 
@@ -70,6 +71,7 @@ export default class Mapas extends Component {
     const coorstart = this.state.coorstart;
     const coorend = this.state.coorend;
     const coorAsked = this.state.coorAsked;
+    
     console.log(coorstart, coorend, coorAsked)
     const map = compose(
       withProps({
@@ -101,14 +103,15 @@ export default class Mapas extends Component {
               },
               (result, status) => {
                 if (status === google.maps.DirectionsStatus.OK) {
+                  
                   this.setState(
                     {
                       directions: result,
                       distance:
                         (
-                          result.routes[0].legs[0].distance.value / 1000 + 0
+                          result.routes[0].legs[0].distance.value / 1000 
                         //   result.routes[0].legs[1].distance.value / 1000
-                        )
+                        ).toFixed(2)
                           .toString()
                           .replace(".", ",") + " Km",
                       duration:
@@ -117,6 +120,7 @@ export default class Mapas extends Component {
                             /* result.routes[0].legs[1].duration.value / 3600 */) *
                             60
                         ) + " min",
+                      price:(parseFloat(result.routes[0].legs[0].distance.value / 1000)* (6 / 100) * 1.3 * 2).toFixed(2) + " €" ,
                       start_point: result.routes[0].legs[0].start_address,
                       start_location_lat: result.routes[0].legs[0].start_location.lat(),
                       start_location_lng: result.routes[0].legs[0].start_location.lng(),
@@ -125,15 +129,13 @@ export default class Mapas extends Component {
                       end_location_lng: result.routes[0].legs[0].end_location.lng()
                     },
                     () => {
-                        console.log("entra aqui Pepe")
-                      let precio =
-                        parseFloat(this.state.distance) * (6 / 100) * 1.3 * 2 +
-                        " €";
-                      console.log(precio);
+                      
+                      // let price = parseFloat(this.state.distance) * (6 / 100) * 1.3 * 2 + " €";
+                      console.log(this.price);
                       console.log(this.state);
                       var tempPointlat = result.routes[0].overview_path[0].lat();
                       var tempPointlng = result.routes[0].overview_path[0].lng();
-                        fnc(this.state.distance, this.state.duration)
+                        fnc(this.state.distance, this.state.duration,this.state.price)
                       console.log(tempPointlat, tempPointlng);
                       // console.log((result.routes[0].legs[0].duration.value/3600) + (result.routes[0].legs[1].duration.value/3600).toString().split(".",1))
                     }
@@ -169,16 +171,15 @@ export default class Mapas extends Component {
         })} */}
       </GoogleMap>
     )});
-    console.log("Pepe se fue y no volvera")
+    
     return map;
   };
 
   handleFormSubmit = (e) => {
     e.preventDefault();
 
-    const {company,places,date,time,description,distance,duration,coorstart,coorend} = this.state;
-
-    this.journeyService.userJourneysCreate({company,places,date,time,description,distance,duration,coorstart,coorend})
+    const {company,places,date,time,price,description,distance,duration,coorstart,coorend} = this.state;
+    this.journeyService.userJourneysCreate({company,places,date,time,description,price,distance,duration,coorstart,coorend})
    this.setState({redirect:true})
   }
 handleChange = (e) => {
@@ -217,7 +218,8 @@ componentWillMount(){
 
           <br />
 
-          <h3>price</h3>
+         
+
           <input
             type="date"
             name="date"
@@ -242,6 +244,8 @@ componentWillMount(){
         <div>
           <p>{this.state.distance}</p>
           <p>{this.state.duration}</p>
+          <h3>{this.state.price}</h3>
+
         </div>
       </div>
     );

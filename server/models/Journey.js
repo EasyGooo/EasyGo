@@ -15,6 +15,7 @@ const JourneySchema = new Schema({
   },
   company: String,
   places: Number,
+  price:String,
   date: String,
   time: String,
   description: String,

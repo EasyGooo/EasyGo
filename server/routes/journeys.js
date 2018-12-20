@@ -33,7 +33,8 @@ journeysRoutes.get('/myjourneys', (req, res, next) => {
   });
 
 journeysRoutes.post("/create",(req, res, next) => {
-  const {coorstart,coorend,company,places,date,time,description,distance,duration}=req.body;
+  console.log(req.body.price)
+  const {coorstart,coorend,company,places,date,time,description,distance,price,duration}=req.body;
   
   const newJourney = new Journey({
     coorstart,
@@ -42,6 +43,7 @@ journeysRoutes.post("/create",(req, res, next) => {
     description,
     places,
     date,
+    price,
     time,
     distance,
     duration,
@@ -51,6 +53,7 @@ journeysRoutes.post("/create",(req, res, next) => {
   Journey.create(newJourney)
   .then((myJourney) => {
     User.findByIdAndUpdate(req.user.id, { $push: { journeys: myJourney } })
+    .then(() => res.status(200).json({msg:"OK"}))
   })
   .catch(err => next(err));
 })
