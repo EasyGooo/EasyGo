@@ -11,8 +11,12 @@ const NotificationSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User"
   },
+  journeyId:{
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  },
   type:{type:String,enum:['reqPlace','resPlace','reqStop']},
-  status:{type:String, enum:["Pendding", "Accepted", "Denied"], default:"Pendding"},
+  status:{type:String, enum:["Pending", "Accepted", "Denied"], default:"Pending"},
   company:String
 
 });

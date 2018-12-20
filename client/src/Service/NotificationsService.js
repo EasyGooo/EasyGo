@@ -14,6 +14,14 @@ create = (data) => {
   return this.service.post('/create', data)
   .then(response => response.data)
 }
+status = (data) => {
+  return this.service.post('/status', data)
+  .then(response => response.data)
+}
+sentNotifs = (data) => {
+  return this.service.get('/sentNotifications', data)
+  .then(response => response.data)
+}
 
 placesChange = (data) => {
   return this.service.post('/change', data)

@@ -29,15 +29,12 @@ export default class JourneySelected extends Component {
   applyForPlace = () =>  {
     
     if (this.state.journey.journey.places > 0) {
-        let places  = (this.state.journey.journey.places ) - 1;
-
         let receptorId = this.state.journey.journey.authorId;
         let type = 'reqPlace';
-        let journeyId = this.state.journey.journey.id;
+        let journeyId = this.state.journey.journey._id;
         let company = this.state.journey.journey.company;
 
-        this.notificationsService.placesChange({places,journeyId})
-        this.notificationsService.create({receptorId,type,company})
+        this.notificationsService.create({receptorId,type,company,journeyId})
         // this.state.notifications.push(`${passenger.name} has booked a place in your journey ${journey.id}`)
     } else {
         return -1

@@ -31,12 +31,18 @@ export default class Notifications extends Component {
     )
   }
   
-   acceptPassenger = () =>  {
-      if (this.places > 0) {
-          this.state.notifications.push(`${driver.name} has accepted your request`)
-  
-      }
+   acceptPassenger = ( notifId,journeyId,author,receptor) =>  {
+      const idNotification = notifId;
+      const status = 'Accepted';
+      const authorId = receptor;
+      const receptorId = author;
+
+
+      this.notificationsService.status({status,idNotification,journeyId,authorId,receptorId})
+      .then(console.log)
   }
+
+
   //  denyPassenger = () =>  {
   //         if (this.places > 0) {
   //             this.places = (this.places) + 1
@@ -70,16 +76,19 @@ export default class Notifications extends Component {
 
     return (
       <div>
-        {Array.isArray(this.state.notifications) && this.state.notifications.map(notification => {
+        {Array.isArray(this.state.notifications) && this.state.notifications.map((notification,i)=> {
           return (
             <div>
-              <p>{notification.company}</p>
+              
 
-              {notification.type=='reqPlace'?(
+              {notification.type=='reqPlace' && notification.status == 'Pending'?(
+                
               <div>
-                <button>accept</button>
+                <p>{notification.company}</p>
+                <button key={notification._id} onClick={(e)=>this.acceptPassenger(notification._id, notification.journeyId, notification.authorId, notification.receptorId)}>accept</button>
                 <button>decline</button>
                </div>
+               
               ):(
                 <div></div>
               )}
