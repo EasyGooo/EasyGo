@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import NotificationsService from '../../Service/NotificationsService';
 export default class JourneySelected extends Component {
   constructor(props) {
     super(props)
   
     this.state = {
        journey:{},
-       notifications:[]
+      places:null
     }
+    this.notificationsService = new NotificationsService();
   }
   getJourney = url => {
     return axios
@@ -24,17 +26,35 @@ export default class JourneySelected extends Component {
   };
 
 
-//   applyForPlace = () =>  {
-//     if (this.places > 0) {
-//         this.places = (this.places) - 1
-//         this.state.notifications.push(`${passenger.name} has booked a place in your journey ${journey.id}`)
-//     } else {
-//         return -1
-//     }
-// }
+  applyForPlace = () =>  {
+    
+    if (this.state.journey.journey.places > 0) {
+        let places  = (this.state.journey.journey.places ) - 1;
 
+        let receptorId = this.state.journey.journey.authorId;
+        let type = 'reqPlace';
+        let journeyId = this.state.journey.journey.id;
+        let company = this.state.journey.journey.company;
+
+        this.notificationsService.placesChange({places,journeyId})
+        this.notificationsService.create({receptorId,type,company})
+        // this.state.notifications.push(`${passenger.name} has booked a place in your journey ${journey.id}`)
+    } else {
+        return -1
+    }
   
-    componentWillMount() {
+}
+
+// getPlaces = ( ) =>{
+//   this.state.journey.journey?(
+//     this.setState({places:this.state.journey.journey.places})
+//   ):(
+//     console.log('kjassazs')
+//   )
+// }
+  
+    componentDidMount() {
+      //  this.getPlaces()
       if (this.props.match.params.id) {
         this.getJourney(`journeys/${this.props.match.params.id}`);
       } else {
@@ -43,12 +63,27 @@ export default class JourneySelected extends Component {
     }
   
   render() {
+    console.log(this.state)
+
+const painter = 
+
+this.state.journey.journey?(
+  <div>
+  <p>{this.state.journey.journey.company}</p>
+  <p>{this.state.journey.journey.date}</p>
+  </div>
+):(
+  <p>loading..</p>
+);
+
+
 console.log(this.state.journey)
 if(this.state.journey.journey)
 console.log(this.state.journey.journey.company)
     return (
       <div>
-        <p>{this.state.journey.company}</p>
+       {painter}
+       <button onClick={this.applyForPlace}>apply</button>
       </div>
     )
   }

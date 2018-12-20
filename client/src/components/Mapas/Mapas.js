@@ -30,6 +30,7 @@ export default class Mapas extends Component {
       companies,
       startpoints,
       map: false,
+      places:3,
       redirect:false
     };
     this.MapWithADirectionsRenderer = null;

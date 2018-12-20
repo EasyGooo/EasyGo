@@ -86,28 +86,30 @@ wantToJoinAddingStop = (e) =>{
 
 
 sortByDate = (f) =>{
-  f.sort(function(a,b){return a.date-b.date});
-  console.log(f)
+  this.state.journeysFiltered.sort((a,b) => (a.company > b.company) ? 1 : ((b.company > a.company) ? -1 : 0))
+  console.log(this.state.journeysFiltered)
  }
 sortByTime = (f) =>{
-  f.sort(function(a,b){return a.time-b.time});
-  console.log(f)
+  this.state.journeysFiltered.sort((a,b) => (a.time > b.time) ? 1 : ((b.time > a.time) ? -1 : 0))
+  console.log(this.state.journeysFiltered)
  }
-sortByCompany = (f) =>{
-  f.sort(function(a,b){return a.company-b.company});
-  console.log(f)
+sortByCompany = () =>{
+  let sortedArray =this.state.journeysFiltered.sort((a,b) => (a.company > b.company) ? 1 : ((b.company > a.company) ? -1 : 0))
+  this.setState({journeysFiltered:sortedArray})
  }
 sortByPlaces = (f) =>{
-  f.sort(function(a,b){return a.places-b.places});
-  console.log(f)
+  this.state.journeysFiltered.sort((a,b) => (a.company > b.company) ? 1 : ((b.company > a.company) ? -1 : 0))
+  console.log(this.state.journeysFiltered)
  }
 sortByDistanceWalkingToMyStartPoint = (f) =>{
-  f.sort(function(a,b){return a.distanceWalkingToMyStartPoint-b.distanceWalkingToMyStartPoint});
-  console.log(f)
+
+  this.state.journeysFiltered.sort((a,b) => (a.company > b.company) ? 1 : ((b.company > a.company) ? -1 : 0))
+  console.log(this.state.journeysFiltered)
  }
-sortByPlaces = (f) =>{
-  f.sort(function(a,b){return a.places-b.places});
-  console.log(f)
+
+ sortByDistance = (f) =>{
+  this.state.journeysFiltered.sort((a,b) => (a.time > b.time) ? 1 : ((b.time > a.time) ? -1 : 0))
+  console.log(this.state.journeysFiltered)
  }
 
 
@@ -132,8 +134,10 @@ const funciona = this.state.userEnd==null ?(
          <Nav />
          <AutocompleteStart update={this.startInfo}/>
          <AutocompleteEnd update={this.endInfo}/>
-
-
+ <button onClick={this.sortByCompany}>company</button>
+ <button onClick={this.sortByTime}>time</button>
+ <button onClick={this.sortByTime}>time</button>
+ 
   {this.state.journeysFiltered.map(journey => (
   <Link key={journey._id} to={`/journeys/${journey._id}`}>
     <div>

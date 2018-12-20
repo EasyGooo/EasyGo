@@ -9,15 +9,6 @@ export default class Join extends Component {
     super(props)
   
     this.state = {
-      company: '',
-      date: '',
-      time: '',
-      description: '',
-      distance: null,
-      duration:null,
-      startPoint: null,
-      endPoint: null,
-      places:3
       
     }
     this.journeyService = new JourneyService();
