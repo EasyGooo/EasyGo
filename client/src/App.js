@@ -7,11 +7,12 @@ import Login from "./components/auth/Login";
 import Home from "./components/sections/Home/Home.js";
 import AuthService from "./Service/AuthService";
 import ProfileInfo from "./components/sections/ProfileInfo/ProfileInfo";
-import Join from './components/sections/Join/Join.js'
-import JourneySelected from './components/JourneySelected/JourneySelected.js'
-import Create from './components/sections/Create/Create.js'
-import LoginSignup from './components/sections/LoginSignup/LoginSignup.js'
-import Notifications from './components/sections/Notifications/Notifications.js'
+import Join from './components/sections/Join/Join.js';
+import Askstop from './components/sections/Askstop/Askstop.js';
+import JourneySelected from './components/JourneySelected/JourneySelected.js';
+import Create from './components/sections/Create/Create.js';
+import LoginSignup from './components/sections/LoginSignup/LoginSignup.js';
+
 
 class App extends Component {
   constructor() {
@@ -75,7 +76,8 @@ class App extends Component {
           <Route path="/signup" render={() => <Signup getUser={this.getUser} />}/>
           <Route path="/profile" render={() => <ProfileInfo image={this.state.user.imgPath} getUser={this.getUser} />} />
           <Route exact path="/journeys/:id" component={JourneySelected}/>
-          <Route exact path="/notifications" render={() => <Notifications getUser={this.getUser} />}/>
+          {/* <Route exact path="/notifications" render={() => <Notifications getUser={this.getUser} />}/> */}
+          <Route path="/askstop" render={() => <Askstop getUser={this.getUser} />}/>
         </Switch>
   
     

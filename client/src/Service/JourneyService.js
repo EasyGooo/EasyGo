@@ -21,7 +21,10 @@ class JourneyService{
     return this.service.post('/create',data)
     .then(response => response.data)
   }
-
+  userJourneysAskstop = (data) => {
+    return this.service.post('/askstop',data)
+    .then(response => response.data)
+  }
   userCars = ()=> {
     return this.service.post('/journeys/car')
     .then(response => response.data)
