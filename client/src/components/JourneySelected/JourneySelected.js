@@ -15,7 +15,7 @@ export default class JourneySelected extends Component {
   }
   getJourney = url => {
     return axios
-      .get(`http://localhost:5000/api/journeys/${url}`)
+      .get(`${process.env.REACT_APP_API_URL}/journeys/${url}`)
       .then(journey =>
         this.setState({
           ...this.state,
