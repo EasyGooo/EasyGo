@@ -51,6 +51,7 @@ export default class JourneySelected extends Component {
   
 // }
 
+
 // getcoorend =()=>{
 //   if (this.state.journey.journey){
 //     return this.state.journey.journey.coorend
@@ -64,6 +65,7 @@ export default class JourneySelected extends Component {
 //     console.log('kjassazs')
 //   )
 // }
+
   
     componentDidMount() {
       if (this.props.match.params.id) {

@@ -125,6 +125,7 @@ export default class Mapas extends Component {
                       directions: result,
                       distance: (result.routes[0].legs[0].distance.value / 1000)
                         //   result.routes[0].legs[1].distance.value / 1000
+
                         .toFixed(2)
                         .toString()
                         .replace(".", ","),
@@ -140,6 +141,7 @@ export default class Mapas extends Component {
                         1.3 *
                         2
                       ).toFixed(2),
+
                       start_point: result.routes[0].legs[0].start_address,
                       start_location_lat: result.routes[0].legs[0].start_location.lat(),
                       start_location_lng: result.routes[0].legs[0].start_location.lng(),
