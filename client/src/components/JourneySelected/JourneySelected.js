@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import NotificationsService from '../../Service/NotificationsService';
 import Mapswithoutform from '../Mapas/Mapwithoutform';
+
 export default class JourneySelected extends Component {
   constructor(props) {
     super(props)
@@ -104,7 +105,7 @@ console.log(this.state.journey.journey.company)
       <div>
        {painter}
    
-       <button onClick={this.applyForPlace}>apply</button>
+       <Link onClick={this.applyForPlace} to='/notifications'>Apply</Link>
       </div>
     )
   }
