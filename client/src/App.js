@@ -76,6 +76,7 @@ class App extends Component {
           <Route path="/signup" render={() => <Signup getUser={this.getUser} />}/>
           <Route path="/profile" render={() => <ProfileInfo image={this.state.user.imgPath} getUser={this.getUser} />} />
           <Route exact path="/journeys/:id" component={JourneySelected}/>
+          <Route exact path="/journeys/:id/askstop" component={Askstop}/>
           <Route exact path="/notifications" render={() => <Notifications getUser={this.getUser} />}/>
           <Route path="/askstop" render={() => <Askstop getUser={this.getUser} />}/>
         </Switch>
