@@ -30,14 +30,19 @@ export default class ProfileInfo extends Component {
     this.setState({[name]: value});
   }
 
-
   render() {
+  
+  
     return (
       <div>
          <Nav />
-         <header id='profile-header'></header>
+
+         <div id='header'>
+         <div id='profile-header2'></div>
+         <div id='profile-header1'></div>
+         </div>
+
          
-        <img src={this.props.image} alt=""/>   
          <form onSubmit={this.handleFormSubmit}>
           <label>Username</label>
           <input type="text" name="username" onChange={e => this.handleChange(e)} />

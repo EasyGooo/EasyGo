@@ -49,9 +49,9 @@ class App extends Component {
       <div>
         
  
-       
+        <div className='logout-block'>
         <Link to='/login' className='logout' onClick={this.logout}>Logout</Link>
-
+        </div>
  
 
          
@@ -74,7 +74,7 @@ class App extends Component {
           <Route path="/join" render={() => <Join getUser={this.getUser} />} />  
           <Route path="/create" render={() => <Create getUser={this.getUser}/>}/>
           <Route path="/signup" render={() => <Signup getUser={this.getUser} />}/>
-          <Route path="/profile" render={() => <ProfileInfo image={this.state.user.imgPath} getUser={this.getUser} />} />
+          <Route path="/profile" render={() => <ProfileInfo getUser={this.getUser} />} />
           <Route exact path="/journeys/:id" component={JourneySelected}/>
           <Route exact path="/notifications" render={() => <Notifications getUser={this.getUser} />}/>
           <Route path="/askstop" render={() => <Askstop getUser={this.getUser} />}/>

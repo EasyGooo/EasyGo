@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import NotificationsService from '../../Service/NotificationsService';
 import Mapswithoutform from '../Mapas/Mapwithoutform';
+import {Link} from "react-router-dom";
 export default class JourneySelected extends Component {
   constructor(props) {
     super(props)
@@ -81,28 +82,54 @@ export default class JourneySelected extends Component {
 const painter = 
 
 this.state.journey.journey?(
-  <div>
-  <p>{this.state.journey.journey.company}</p>
-  <p>{this.state.journey.journey.date}</p>
-  <p>{this.state.journey.journey.time}</p>
-  <p>{this.state.journey.journey.price}</p>
-  <p>{this.state.journey.journey.duration}</p>
+  <div className='selected-block'>
+  <div className='jour-blck'>
+  <div className='info-journey'>
+  <h1 className='comp-selected'>{this.state.journey.journey.company}</h1>
+  <p className='color-sel'>Date: {this.state.journey.journey.date}</p>
+  <p className='time color-sel'>Time: {this.state.journey.journey.time}</p>
+ 
   
+  <div className='apply-journey'>
+  <Link  to='/notifications' onClick={this.applyForPlace}>apply</Link>
+  </div>
+  </div>
+  <div className='map-selected'>
   <Mapswithoutform startPoint ={this.state.journey.journey.coorstart} endPoint ={this.state.journey.journey.coorend} />
+
+  <div className='map-inf'>
+  <div className='info-text'>
+  <div className="journeyInfo">
+  <p className=''>{this.state.journey.journey.duration}</p>
+  </div>
+  <p>min</p>
+  </div>
+
+  <div className='info-text'>
+  <div className="journeyInfo">
+  <p className=''>{this.state.journey.journey.price}</p>
+  </div>
+  <p>eur</p>
+  </div>
+  </div>
+  </div>
+
+  </div>
   </div>
 ):(
   <p>loading..</p>
 );
 
 
-console.log(this.state.journey)
+
 if(this.state.journey.journey)
 console.log(this.state.journey.journey.company)
     return (
       <div>
        {painter}
-   
-       <button onClick={this.applyForPlace}>apply</button>
+  
+      
+  
       </div>
     )
   }
