@@ -38,16 +38,18 @@ a
             value={this.state.address}
             onChange={this.handleChange}
             onSelect={this.handleSelect}
+            
           >
             {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
               <div>
                 <input
                   {...getInputProps({
-                    placeholder: 'Search Places ...',
-                    className: 'location-search-input',
+                    placeholder: 'Start point',
+                    className: 'location-search-inputStart',
+                    
                   })}
                 />
-                <div className="autocomplete-dropdown-container">
+                <div className="autocomplete-dropdown-container ">
                   {loading && <div>Loading...</div>}
                   {suggestions.map(suggestion => {
                     const className = suggestion.active
@@ -55,12 +57,12 @@ a
                       : 'suggestion-item';
                     // inline style for demonstration purpose
                     const style = suggestion.active
-                      ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                      ? { backgroundColor: '#fafafa', cursor: 'pointer'}
                       : { backgroundColor: '#ffffff', cursor: 'pointer' };
                     return (
                       <div
                         {...getSuggestionItemProps(suggestion, {
-                          className,
+                          className:'auto-input',
                           style,
                         })}
                       >

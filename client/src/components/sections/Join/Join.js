@@ -3,6 +3,7 @@ import Nav from '../../Nav/Nav.js'
 import AutocompleteStart from '../../Mapas/AutocompleteStart.js'
 import AutocompleteEnd from '../../Mapas/AutocompleteEnd.js'
 import JourneyService from '../../../Service/JourneyService.js'
+import Toggable from '../../Toggable/Toggable.js'
 import axios from 'axios'
 import {Link} from "react-router-dom";
 export default class Join extends Component {
@@ -16,8 +17,7 @@ constructor(props) {
     directions:null,
     journeys: null,
     journeysFiltered:[],
-    journeysCloseToMyStartPoint:[]
-
+    enabled: false 
   }
   this.journeyService = new JourneyService();
 
@@ -28,6 +28,13 @@ getJourneys = ()=>{
   .then(data=>this.setState({ journeys:data }))
 }
 
+toggleNotifications = ({ enabled }) => {
+  
+  this.setState({
+    enabled
+    
+  });
+};
 
 startInfo = (userStart) => {
     this.setState({ ...this.state, userStart })
@@ -56,42 +63,43 @@ filterByDistance = ()=>{
 
 
 
-wantToJoinAddingStop = () =>{
-  let pointInTheWay=this.routes[0].overview_path;
-  console.log(pointInTheWay)
-  
-  this.state.journeys.forEach((e)=>{
-    pointInTheWay.forEach(point => {
-      // point.lat(), pont.lng();
-      console.log("entra")
-      console.log(point.lat())
-      if ((e.coordend.lat < (this.state.userEnd.lat + 0.01) && (e.coordend.lat > (this.state.userEnd.lat - 0.01))) && ((e.coordend.lng < (this.state.userEnd.lng + 0.01))
-      &&(e.coordend.lng > (this.state.userEnd.lng - 0.01)))
-      &&  ((point.lat() < (this.state.coorAsked.lat + 0.01) && (point.lat() > (this.state.coorAsked.lat - 0.01))) && ((point.lng() < (this.state.coorAsked.lng + 0.01))
-      &&(point.lng() > (this.state.coorAsked.lng - 0.01))))) {
-        this.state.journeysCloseToMyStartPoint.push(e)
-      }console.log(this.state.journeysCloseToMyStartPoint)
-    })
-  })
-}
 
-getDistance =() =>{
-  let DirectionsService = new window.google.maps.DirectionsService();
-  this.state.journeys.forEach((e)=>{
-  // let pointInTheWaylat=this.routes[0].overview_path[0].lat();
-  // let pointInTheWaylng=this.routes[0].overview_path[0].lng();
-  if (this.coorAsked){
-  DirectionsService.route(
-    {
-      origin: new window.google.maps.LatLng(this.coorAsked.lat,this.coorAsked.lng),
-      destination: new window.google.maps.LatLng(e.this.routes[0].overview_path[0].lat(),e.this.routes[0].overview_path[0].lng()),
-      travelMode: window.google.maps.TravelMode.WALKING,
-    },(result, status) => {
-      console.log(result)
-    })
-  }
-    console.log(DirectionsService)
-})}
+// wantToJoinAddingStop = () =>{
+//   let pointInTheWay=this.routes[0].overview_path;
+//   console.log(pointInTheWay)
+  
+//   this.state.journeys.forEach((e)=>{
+//     pointInTheWay.forEach(point => {
+//       // point.lat(), pont.lng();
+//       console.log("entra")
+//       console.log(point.lat())
+//       if ((e.coordend.lat < (this.state.userEnd.lat + 0.01) && (e.coordend.lat > (this.state.userEnd.lat - 0.01))) && ((e.coordend.lng < (this.state.userEnd.lng + 0.01))
+//       &&(e.coordend.lng > (this.state.userEnd.lng - 0.01)))
+//       &&  ((point.lat() < (this.state.coorAsked.lat + 0.01) && (point.lat() > (this.state.coorAsked.lat - 0.01))) && ((point.lng() < (this.state.coorAsked.lng + 0.01))
+//       &&(point.lng() > (this.state.coorAsked.lng - 0.01))))) {
+//         this.state.journeysCloseToMyStartPoint.push(e)
+//       }console.log(this.state.journeysCloseToMyStartPoint)
+//     })
+//   })
+// }
+
+// getDistance =() =>{
+//   let DirectionsService = new window.google.maps.DirectionsService();
+//   this.state.journeys.forEach((e)=>{
+//   // let pointInTheWaylat=this.routes[0].overview_path[0].lat();
+//   // let pointInTheWaylng=this.routes[0].overview_path[0].lng();
+//   if (this.coorAsked){
+//   DirectionsService.route(
+//     {
+//       origin: new window.google.maps.LatLng(this.coorAsked.lat,this.coorAsked.lng),
+//       destination: new window.google.maps.LatLng(e.this.routes[0].overview_path[0].lat(),e.this.routes[0].overview_path[0].lng()),
+//       travelMode: window.google.maps.TravelMode.WALKING,
+//     },(result, status) => {
+//       console.log(result)
+//     })
+//   }
+//     console.log(DirectionsService)
+// })}
 
 
 
@@ -145,46 +153,86 @@ componentDidMount() {
   this.getJourneys();
 }
 
+
   render() {
-    console.log(this.state.journeys)
-  
-const funciona = this.state.userEnd==null ?(
-    <p>loading...</p>
-):(
-     
-      console.log(this.filterByDistance())
-);
+    console.log(this.state.journeysFiltered)
+
+    const funciona = this.state.userEnd==null ?(
+      <p></p>
+  ):(
+       
+        console.log(this.filterByDistance())
+  );
+
+
+const { enabled } = this.state;
+
 
     return (
-      <div>
-         {funciona}
+      
+      <div className='cont'>
+       
+       {funciona}
          <Nav />
-         <AutocompleteStart update={this.startInfo}/>
-         <AutocompleteEnd update={this.endInfo}/>
-              
- <button onClick={this.sortByCompany}>company</button>
- <button onClick={this.sortByDate}>Date</button>
- <button onClick={this.sortByTime}>time</button>
- <button onClick={this.sortByDistance}>distance</button>
- <button onClick={this.sortByPrice}>price</button>
- <button onClick={this.sortByDuration}>duration</button>
+          <div className='join-block'>
+        
+     
 
+
+         <div  className='userJourney'>
+
+         <AutocompleteStart update={this.startInfo}/>
+         <AutocompleteEnd update={this.endInfo}/>     
+
+         </div>
+
+ 
+           <div className='filters'>
+           <div className= 'toggle'>
+             <p>Filters:</p>
+            <Toggable
+              theme="default" 
+              enabled={enabled}
+              onStateChanged={this.toggleNotifications}
+            />
+            </div>
+
+          {enabled && (
+            <div>
+              <button onClick={this.sortByCompany}>company</button>
+              <button onClick={this.sortByDate}>Date</button>
+              <button onClick={this.sortByTime}>time</button>
+              <button onClick={this.sortByDistance}>distance</button>
+              <button onClick={this.sortByPrice}>price</button>
+              <button onClick={this.sortByDuration}>duration</button>
+            </div>
+          )}
+        </div>  
+
+<div>
   {this.state.journeysFiltered.map(journey => (
   <Link key={journey._id} to={`/journeys/${journey._id}`}>
     <div>
+      <div className = 'journey-target'>
+        <img className='user-join-img' src={journey.imgPath} alt=""/>
       <div>
+        <p>{journey.username}</p>
         <h1>{journey.company}</h1>
         <p>{journey.date}</p>
         <p>{journey.distance}</p>
         <p>{journey.duration}</p>
         <p>{journey.time}</p>
         <p>{journey.price}</p>
+      </div>  
       </div>
     </div>
   </Link>
 ))}
+</div>
 
-      </div>
+</div>
+</div>
+     
     )
   }
 }

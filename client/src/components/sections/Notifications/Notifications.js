@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import NotificationsService from '../../../Service/NotificationsService.js'
+import Nav from '../../../components/Nav/Nav.js'
 
 export default class Notifications extends Component {
   constructor(props) {
@@ -78,16 +79,22 @@ export default class Notifications extends Component {
       <div>
         {Array.isArray(this.state.notifications) && this.state.notifications.map((notification,i)=> {
           return (
-            <div>
-              
+            <div className='notifs-block'>
+              <Nav />
 
               {notification.type=='reqPlace' && notification.status == 'Pending'?(
                 
-              <div>
+            <div className="Message">
+                <div className="Message-icon">
+                  <i className="fa fa-bell-o"></i>
+                </div>
+                <div className="Message-body">
                 <p>{notification.company}</p>
-                <button key={notification._id} onClick={(e)=>this.acceptPassenger(notification._id, notification.journeyId, notification.authorId, notification.receptorId)}>accept</button>
-                <button>decline</button>
-               </div>
+                  <button className="Message-button" key={notification._id} onClick={(e)=>this.acceptPassenger(notification._id, notification.journeyId, notification.authorId, notification.receptorId)}>Accept</button>
+                  <button className="Message-button">Deny</button>
+                </div>
+                <button className="Message-close js-messageClose"><i class="fa fa-times"></i></button>
+            </div>
                
               ):(
                 <div></div>
@@ -111,3 +118,8 @@ export default class Notifications extends Component {
     )
   }
 }
+
+
+
+
+
