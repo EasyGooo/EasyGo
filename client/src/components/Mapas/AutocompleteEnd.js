@@ -38,13 +38,14 @@ a
             value={this.state.address}
             onChange={this.handleChange}
             onSelect={this.handleSelect}
+            className='auto-info'
           >
             {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
               <div>
                 <input
                   {...getInputProps({
-                    placeholder: 'Search Places ...',
-                    className: 'location-search-input',
+                    placeholder: 'End Point',
+                    className: 'location-search-inputEnd',
                   })}
                 />
                 <div className="autocomplete-dropdown-container">
@@ -60,7 +61,7 @@ a
                     return (
                       <div
                         {...getSuggestionItemProps(suggestion, {
-                          className,
+                          className:'auto-input',
                           style,
                         })}
                       >

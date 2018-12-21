@@ -34,7 +34,7 @@ journeysRoutes.get('/myjourneys', (req, res, next) => {
 
 journeysRoutes.post("/create",(req, res, next) => {
   console.log(req.body.price)
-  const {coorstart,coorend,company,places,date,time,description,distance,price,duration}=req.body;
+  const {coorstart,coorend,company,places,date,time,description,distance,price,duration,username,imgPath}=req.body;
   
   const newJourney = new Journey({
     coorstart,
@@ -47,7 +47,9 @@ journeysRoutes.post("/create",(req, res, next) => {
     time,
     distance,
     duration,
-    authorId: req.user.id
+    authorId: req.user.id,
+    username,
+    imgPath
   }) 
   
   Journey.create(newJourney)

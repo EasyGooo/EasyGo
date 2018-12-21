@@ -43,6 +43,28 @@ export default class JourneySelected extends Component {
     }
   
 }
+// getcoorstart =()=>{
+//   if (this.state.journey.journey){
+//     return this.state.journey.journey.coorstart
+//   }
+// console.log(this.getcoorstart())
+  
+// }
+
+
+// getcoorend =()=>{
+//   if (this.state.journey.journey){
+//     return this.state.journey.journey.coorend
+//   }
+  
+// }
+// getPlaces = ( ) =>{
+//   this.state.journey.journey?(
+//     this.setState({places:this.state.journey.journey.places})
+//   ):(
+//     console.log('kjassazs')
+//   )
+// }
 
   
     componentDidMount() {

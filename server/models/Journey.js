@@ -21,6 +21,8 @@ const JourneySchema = new Schema({
   description: String,
   distance:String,
   duration:String,
+  username:String,
+  imgPath:String,
   authorId: {
     type: Schema.Types.ObjectId,
     ref: "User"

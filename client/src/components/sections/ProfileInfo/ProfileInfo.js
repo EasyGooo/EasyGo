@@ -35,7 +35,7 @@ export default class ProfileInfo extends Component {
     return (
       <div>
          <Nav />
-         <header id='profile-header'><h1>PROFILE</h1></header>
+         <header id='profile-header'></header>
          
         <img src={this.props.image} alt=""/>   
          <form onSubmit={this.handleFormSubmit}>

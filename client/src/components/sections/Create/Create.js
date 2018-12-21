@@ -52,9 +52,7 @@ handleChange = (e) => {
       <div>
          
          <Nav />
-         <h1>Create</h1>
-          
-    <Mapa startPoint={this.startPoint} endPoint={this.endPoint} distance={this.distance}/>               
+    <Mapa startPoint={this.startPoint} endPoint={this.endPoint} user={this.props.username} distance={this.distance}/>               
           
 
       </div>

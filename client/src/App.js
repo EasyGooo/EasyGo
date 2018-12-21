@@ -50,7 +50,7 @@ class App extends Component {
         
  
        
-        <button className='logout' onClick={this.logout}>Logout</button>
+        <Link to='/login' className='logout' onClick={this.logout}>Logout</Link>
 
  
 
@@ -70,9 +70,9 @@ class App extends Component {
           <Route exact path="/singup" render={() => <Signup getUser={this.getUser} />} />  
           <Route exact path="/login" render={() => <Login getUser={this.getUser} />} />  
           <Route exact path="/" render={() => <LoginSignup getUser={this.getUser} />} />
-          <Route path="/home" render={() => <Home getUser={this.getUser} />}/>
+         
           <Route path="/join" render={() => <Join getUser={this.getUser} />} />  
-          <Route path="/create" render={() => <Create getUser={this.getUser} />}/>
+          <Route path="/create" render={() => <Create getUser={this.getUser}/>}/>
           <Route path="/signup" render={() => <Signup getUser={this.getUser} />}/>
           <Route path="/profile" render={() => <ProfileInfo image={this.state.user.imgPath} getUser={this.getUser} />} />
           <Route exact path="/journeys/:id" component={JourneySelected}/>
