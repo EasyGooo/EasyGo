@@ -25,9 +25,7 @@ export default class Mapas extends Component {
     this.state = {
       coorstart: null,
       coorend: null,
-
       coorAsked: null,
-
       position: { lat: 40.416947, lng: -3.703523 },
       companies,
       startpoints,
@@ -54,9 +52,11 @@ export default class Mapas extends Component {
     this.props.distance(this.state.distance)
   };
   updateCoorAsked = coorAsked => {
-
-    this.setState({ ...this.state, coorAsked });
-
+    this.setState({ ...this.state, coorAsked} , () => {
+      this.map = this.createMap(this.comodin, this.state.map)();
+  });
+  
+    
   };
 
   handleInfo = () => {
@@ -70,16 +70,16 @@ export default class Mapas extends Component {
   // }
 
   componentWillMount=()=>{
-
-    this.setState({...this.state, coorstart:this.props.startPoint , coorend: this.props.endPoint})
-
+  
+  
+    this.setState({...this.state, coorstart:this.props.startPoint , coorend: this.props.endPoint,coorAsked:this.props.coorAsked})
   }
   createMap = (fnc, mapGoogle) => {
     const coorstart = this.state.coorstart;
     const coorend = this.state.coorend;
     const coorAsked = this.state.coorAsked;
     
-
+    
     const map = compose(
       withProps({
         googleMapURL: `https://maps.googleapis.com/maps/api/js?key=AIzaSyB-P5Wpth-cMCDmm_TFPev1gWaoqhYAYpQ&v=3.exp&libraries=geometry,drawing,places`,
@@ -99,16 +99,14 @@ export default class Mapas extends Component {
                 origin: new google.maps.LatLng(coorstart.lat, coorstart.lng),
                 destination: new google.maps.LatLng(coorend.lat, coorend.lng),
                 travelMode: google.maps.TravelMode.DRIVING,
-
-                //  waypoints: [
-                //   {
-                //     location: new google.maps.LatLng(
-                //       coorAsked.lat,
-                //       coorAsked.lng
-                //     )
-                //   }
-                // ]
-
+                waypoints: [
+                  {
+                    location: new google.maps.LatLng(
+                      coorAsked.lat,
+                      coorAsked.lng
+                    )
+                  }
+                ]
                
               },
               (result, status) => {
@@ -120,20 +118,16 @@ export default class Mapas extends Component {
                       distance:
                         (
                           result.routes[0].legs[0].distance.value / 1000 
-
-                        //   result.routes[0].legs[1].distance.value / 1000
-
+                        + result.routes[0].legs[1].distance.value / 1000
                         ).toFixed(2)
                           .toString()
-                          .replace(".", ",") + " Km",
+                          .replace(".", ",") ,
                       duration:
                         Math.floor(
-
-                          (result.routes[0].legs[0].duration.value / 3600 //+
-                            /* result.routes[0].legs[1].duration.value / 3600 */) *
-
+                          (result.routes[0].legs[0].duration.value / 3600 
+                            + result.routes[0].legs[1].duration.value / 3600 ) *
                             60
-                        ) + " min",
+                        ) ,
                       price:(parseFloat(result.routes[0].legs[0].distance.value / 1000)* (6 / 100) * 1.3 * 2).toFixed(2) + " €" ,
                       start_point: result.routes[0].legs[0].start_address,
                       start_location_lat: result.routes[0].legs[0].start_location.lat(),
@@ -171,17 +165,7 @@ export default class Mapas extends Component {
         {props.directions && (
           <DirectionsRenderer directions={props.directions} />
         )}
-        {/* {this.state.companies.map((company, i) => {
-          return (
-            <Marker
-              key={i}
-              position={{
-                lat: +company.position.lat.$numberDouble,
-                lng: +company.position.lng.$numberDouble
-              }}
-            />
-          );
-        })} */}
+        
       </GoogleMap>
     )});
     
@@ -214,8 +198,8 @@ handleChange = (e) => {
        
 
       
-        {/* <AutocompleteAsked update={this.updateCoorAsked} /> */}
-        {/* <MapWithADirectionsRenderer /> */}
+        <AutocompleteAsked update={this.updateCoorAsked} />
+      
         {this.map}
     </div>
     );
