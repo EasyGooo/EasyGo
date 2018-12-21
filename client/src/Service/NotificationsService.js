@@ -4,7 +4,7 @@ class NotificationsService{
 constructor(props) {
   
   this.service = axios.create({
-    baseURL: "http://localhost:5000/api/notifications",
+    baseURL: `${process.env.REACT_APP_API_URL}/notifications`,
     withCredentials: true
   })
 

@@ -6,7 +6,6 @@
   
   
 }
-
 .logo-join{
   width: 200px;
   height: 200px;
@@ -19,12 +18,11 @@
   width: 80vw;
   text-align:center;
   margin: auto;
+  overflow: hidden;
 }
 .userJourney{
   display: flex;
 justify-items: center;
-
-
 }
 .cont{
   width: 100vw;
@@ -47,4 +45,22 @@ justify-items: center;
 .journey-target{
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   display: flex;
+}
+.user-journey{
+  display: flex;
+  flex-direction: column;
+}
+.user-journey>p{
+  text-decoration: none;
+  
+}
+.link-style{
+  text-decoration: none;
+}
+.filters{
+  margin-bottom: 50px;
+  display: flex;
+}
+.filters-button{
+  margin-top: 10px;
 }

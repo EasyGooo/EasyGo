@@ -3,7 +3,7 @@ import axios from 'axios'
 class JourneyService{
   constructor() {
     this.service = axios.create({
-      baseURL: "http://localhost:5000/api/journeys",
+      baseURL: `${process.env.REACT_APP_API_URL}/journeys`,
       withCredentials: true
     })
   }
