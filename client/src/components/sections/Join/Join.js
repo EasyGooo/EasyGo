@@ -176,14 +176,15 @@ const { enabled } = this.state;
          <Nav />
           <div className='join-block'>
         
-     
 
+        <div className='menu-join'>
+          <img className='join-logo' src="../../../../images/EasyGo-logo.svg" alt=""/>
 
          <div  className='userJourney'>
-
-         <AutocompleteStart update={this.startInfo}/>
-         <AutocompleteEnd update={this.endInfo}/>     
-
+       
+            <AutocompleteStart update={this.startInfo}/>
+            <AutocompleteEnd update={this.endInfo}/>     
+       
          </div>
 
  
@@ -198,32 +199,39 @@ const { enabled } = this.state;
             </div>
 
           {enabled && (
-            <div>
-              <button onClick={this.sortByCompany}>company</button>
-              <button onClick={this.sortByDate}>Date</button>
-              <button onClick={this.sortByTime}>time</button>
-              <button onClick={this.sortByDistance}>distance</button>
-              <button onClick={this.sortByPrice}>price</button>
-              <button onClick={this.sortByDuration}>duration</button>
+            <div className='filters-btn'>
+              <button className='filters-button' onClick={this.sortByCompany}>company</button>
+              <button className='filters-button' onClick={this.sortByDate}>Date</button>
+              <button className='filters-button' onClick={this.sortByTime}>time</button>
+              <button className='filters-button' onClick={this.sortByDistance}>distance</button>
+              <button className='filters-button' onClick={this.sortByPrice}>price</button>
+              <button className='filters-button' onClick={this.sortByDuration}>duration</button>
             </div>
           )}
         </div>  
+      </div>
 
-<div>
+<div clssName='journeys-map'>
   {this.state.journeysFiltered.map(journey => (
-  <Link key={journey._id} to={`/journeys/${journey._id}`}>
+  <Link className='link-style' key={journey._id} to={`/journeys/${journey._id}`}>
     <div>
       <div className = 'journey-target'>
+    <div className='user-journey'>
         <img className='user-join-img' src={journey.imgPath} alt=""/>
-      <div>
         <p>{journey.username}</p>
-        <h1>{journey.company}</h1>
-        <p>{journey.date}</p>
-        <p>{journey.distance}</p>
-        <p>{journey.duration}</p>
-        <p>{journey.time}</p>
-        <p>{journey.price}</p>
-      </div>  
+    </div>
+      <div className='join-inf'>      
+        <h2 className='join-h2'>Travel to: {journey.company}</h2>
+        <div className='text'>
+        <div clssName='time'>
+        <p><b>Start time: </b>{journey.date}    {journey.time}</p>
+        
+        </div>
+          
+        <p><b>Price: </b>{journey.price}</p>
+        </div>
+      </div>
+
       </div>
     </div>
   </Link>

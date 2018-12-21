@@ -14,11 +14,16 @@
   display:flex;
   flex-direction: column;
   align-items: center;
-  height: 90vh;
+  height: 100vh;
   width: 80vw;
   text-align:center;
   margin: auto;
+<<<<<<< HEAD
   overflow: hidden;
+=======
+  padding-top:500px;
+ 
+>>>>>>> 023e7eb2ace59934bfe1c451c2fc79da2606b855
 }
 .userJourney{
   display: flex;
@@ -32,7 +37,10 @@ justify-items: center;
 }
 .toggle{
   display: flex;
+  justify-content: center;
   align-items: center;
+  text-align-last: center;
+  margin-bottom: -30px;
 }
 .toggle>p{
   margin-right: 20px;
@@ -45,6 +53,11 @@ justify-items: center;
 .journey-target{
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   display: flex;
+  margin-top: 20px;
+  width: 800px;
+  transition: all 3s ease-in;
+  border-radius: 80px 20px 20px 20px;
+  
 }
 .user-journey{
   display: flex;
@@ -58,9 +71,66 @@ justify-items: center;
   text-decoration: none;
 }
 .filters{
-  margin-bottom: 50px;
+  
   display: flex;
+  margin-top: 20px;
+}
+.filters-btn{
+  margin-bottom: 50px;
+  display: inline-block;
+  margin-top: 20px;
 }
 .filters-button{
-  margin-top: 10px;
+  margin-top: -50px;
+  height: 40px;
+  border-radius:10px;
+  width: 100px;
+  margin: 10px;
+  color: white;
+  background-color:#26aef6; 
+  font-size: 15px;
+  outline: none;
+  border: none;
+}
+.join-inf{
+width: 600px;
+}
+
+.join-logo{
+  width: 200px;
+  height: 200px;
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+.journeys-map{
+  overflow-y: scroll;
+  height: 400px;
+  width: 500px;
+}
+.join-h2{
+  color:#5768f2
+}
+.text{
+  text-align: left;
+  margin-left: 80px;
+  color: #26aef6;
+  font-size:20px;
+}
+.text>p{
+  margin-top: -10px;
+}
+.time{
+  display:flex;
+}
+.menu-join{
+position:fixed;
+width: 100%;
+height: 500px;
+display: flex;
+flex-direction: column;
+align-items: center;
+background-color: #FAFAFA;
+margin-top: -50px;
+top:0;
+
 }

@@ -49,9 +49,9 @@ class App extends Component {
       <div>
         
  
-       
+        <div className='logout-block'>
         <Link to='/login' className='logout' onClick={this.logout}>Logout</Link>
-
+        </div>
  
 
          
