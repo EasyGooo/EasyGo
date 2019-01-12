@@ -4,13 +4,13 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 100wh;
 	height: 100vh;
 	color: #fff;
 	background: linear-gradient(-45deg, rgb(7, 214, 135), rgb(68, 245, 201), rgb(74, 184, 224), rgb(115, 220, 252));
 	background-size: 400% 400%;
 	animation: Gradient 15s ease infinite;
 	padding-top: 15rem;
+	box-sizing: border-box;
 }
 
 @keyframes Gradient {
@@ -28,28 +28,28 @@
 
 
 .logo{
-	height: 13rem;
-	width: 13rem;
+	height: 10rem;
+	width: 10rem;
 	margin-bottom: -60px;
 }
 .button{
-	width: 300px;
-	height: 50px;
+	width: 250px;
+	height: 40px;
 	border-radius: 25px;
 	text-decoration: none;
 	text-align: center;
-	line-height: 50px;
-	font-size: 20px;
+	line-height: 40px;
+	font-size: 15px;
 	margin-top: 50px;
 	font-family: 'Quicksand', sans-serif;
 
 }
 
-.btn-log{
-color: white;
-border: 1px solid white;
-cursor: pointer;
-}
+	.btn-log{
+	color: white;
+	border: 1px solid white;
+	cursor: pointer;
+	}
 .btn-log:hover{
 	color: rgb(74, 184, 224);
 	background-color: white;
@@ -58,11 +58,11 @@ cursor: pointer;
 	}
 	
 
-.btn-sign{	
-color: rgb(74, 184, 224);
-background-color: white;
-cursor: pointer;
-}
+	.btn-sign{	
+	color: rgb(74, 184, 224);
+	background-color: white;
+	cursor: pointer;
+	}
 
 .btn-sign:hover{	
 	color: white;
@@ -81,13 +81,13 @@ cursor: pointer;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		margin-top: 6rem;
+		margin-top: 3rem;
 	}
 
 	.inputs-form{
 
-		min-width: 25rem;
-		height: 50px;
+		min-width: 20rem;
+		height: 40px;
 		border-radius: 25px;
 		background-color: transparent;
 		border: 1px solid white;
@@ -108,14 +108,14 @@ cursor: pointer;
 	background-color: white;
 	border: none;
 	cursor: pointer;
-	width: 300px;
-	height: 50px;
+	width: 250px;
+	height: 40px;
 	border-radius: 25px;
 	text-decoration: none;
 	text-align: center;
-	line-height: 50px;
+	line-height: 40px;
 	font-size: 20px;
-	margin-top: 50px;
+	margin-top: 40px;
 	font-family: 'Quicksand', sans-serif;
 	outline: none;
 	transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -139,8 +139,8 @@ cursor: pointer;
   outline: none;
   overflow: hidden;
   cursor: pointer;
- transform:rotate(180deg);
- font-size: 30px;
+ 	transform:rotate(180deg);
+ 	font-size: 30px;
 
   
   

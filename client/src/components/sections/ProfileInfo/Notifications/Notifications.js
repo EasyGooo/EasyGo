@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import NotificationsService from '../../../Service/NotificationsService.js'
-import Nav from '../../../components/Nav/Nav.js'
+import NotificationsService from '../../../../Service/NotificationsService.js'
+import Nav from '../../../Nav/Nav.js'
 
 export default class Notifications extends Component {
   constructor(props) {
@@ -68,6 +68,7 @@ export default class Notifications extends Component {
 
   render() {
 
+   
 // const paint =
     // this.state.notifications.length !== 0 ? 
     // <p>{this.state.notifications.company}</p>

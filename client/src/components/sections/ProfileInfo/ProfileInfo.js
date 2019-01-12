@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import AuthService from '../../../Service/AuthService.js';
 import Nav from '../../Nav/Nav.js'
+import UserInfo from './UserInfo/UserInfo.js'
 export default class ProfileInfo extends Component {
   constructor() {
     super();
@@ -8,10 +9,12 @@ export default class ProfileInfo extends Component {
     this.state = {
       username: '',
       password: '',
-      email:''
+      email:'',
+      user:null
     }
  
     this.authService = new AuthService();
+    
   }
 
 
@@ -30,19 +33,21 @@ export default class ProfileInfo extends Component {
     this.setState({[name]: value});
   }
 
+  getUserImage=()=>{
+    if(this.props.getUser === null){
+      return 'defaultimage'
+    }else{
+      return this.props.imgPath
+    }
+  }
   render() {
   
-  
+    console.log(this.props.getImage)
     return (
       <div>
          <Nav />
-
-         <div id='header'>
-         <div id='profile-header2'></div>
-         <div id='profile-header1'></div>
-         </div>
-
-         
+       <div className='profile-info-cont'>
+         <UserInfo image={this.props.getImage} />
          <form onSubmit={this.handleFormSubmit}>
           <label>Username</label>
           <input type="text" name="username" onChange={e => this.handleChange(e)} />
@@ -56,7 +61,7 @@ export default class ProfileInfo extends Component {
           <input type="submit" value="Change"/>
         </form>
 
-        
+      </div>        
       </div>
     )
   }

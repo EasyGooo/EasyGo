@@ -12,7 +12,7 @@ import Askstop from './components/sections/Askstop/Askstop.js';
 import JourneySelected from './components/JourneySelected/JourneySelected.js';
 import Create from './components/sections/Create/Create.js';
 import LoginSignup from './components/sections/LoginSignup/LoginSignup.js';
-import Notifications from './components/sections/Notifications/Notifications';
+import Notifications from './components/sections/ProfileInfo/Notifications/Notifications.js';
 
 class App extends Component {
   constructor() {
@@ -23,7 +23,6 @@ class App extends Component {
     };
 
     this.authService = new AuthService();
-
     this.fetchUser();
   }
 
@@ -42,9 +41,16 @@ class App extends Component {
       .logout()
       .then(() => this.setState({ ...this.state, user: null }));
   };
+  getUserImage=()=>{
+    if(this.state.user === null){
+      return 'https://res.cloudinary.com/easy-go/image/upload/v1544540100/easy-go/default-user.png'
+    }else{
+      return this.state.user.imgPath
+    }
+  }
 
   render() {
-
+console.log(this.getUserImage())
     const welcome = this.state.user ? (
       <div>
         
@@ -69,12 +75,11 @@ class App extends Component {
         <Switch>
           <Route exact path="/singup" render={() => <Signup getUser={this.getUser} />} />  
           <Route exact path="/login" render={() => <Login getUser={this.getUser} />} />  
-          <Route exact path="/" render={() => <LoginSignup getUser={this.getUser} />} />
-         
+          <Route exact path="/" render={() => <LoginSignup getUser={this.getUser} />} />       
           <Route path="/join" render={() => <Join getUser={this.getUser} />} />  
           <Route path="/create" render={() => <Create getUser={this.getUser}/>}/>
           <Route path="/signup" render={() => <Signup getUser={this.getUser} />}/>
-          <Route path="/profile" render={() => <ProfileInfo getUser={this.getUser} />} />
+          <Route path="/profile" render={() => <ProfileInfo getImage={this.getUserImage()} />} />
           <Route exact path="/journeys/:id" component={JourneySelected}/>
           <Route exact path="/journeys/:id/askstop" component={Askstop}/>
           <Route exact path="/notifications" render={() => <Notifications getUser={this.getUser} />}/>
