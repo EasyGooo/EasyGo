@@ -1,7 +1,6 @@
 const express = require("express");
 const journeysRoutes = express.Router();
 const Journey = require("../models/Journey");
-const Valuation = require("../models/Valuation");
 const User = require("../models/User");
 const Company = require("../models/Company");
 

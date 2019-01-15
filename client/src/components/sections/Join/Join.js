@@ -117,35 +117,23 @@ sortByTime = () =>{
 sortByCompany = () =>{
   
   let sortedArray = this.state.journeysFiltered.sort((a,b) => (a.company > b.company) ? 1 : ((b.company > a.company) ? -1 : 0))
-  console.log(this.state.journeysFiltered)
   
   this.setState({journeysFiltered:sortedArray})
  }
 sortByPlaces = () =>{
   let sortedArray = this.state.journeysFiltered.sort((a,b) => (a.places> b.places) ? 1 : ((b.places > a.places) ? -1 : 0))
-  console.log(this.state.journeysFiltered)
   this.setState({journeysFiltered:sortedArray})
  }
-// sortByDistanceWalkingToMyStartPoint = () =>{
-  
-//   let sortedArray= this.state.journeysFiltered.sort((a,b) => (a.company > b.company) ? 1 : ((b.company > a.company) ? -1 : 0))
-//   console.log(this.state.journeysFiltered)
-//   this.setState({journeysFiltered:sortedArray})
-//  }
-
 sortByDistance = () =>{
   let sortedArray = this.state.journeysFiltered.sort((a,b) => (a.distance > b.distance) ? 1 : ((b.distance > a.distance) ? -1 : 0))
-  console.log(this.state.journeysFiltered)
   this.setState({journeysFiltered:sortedArray})
  }
  sortByDuration = () =>{
   let sortedArray = this.state.journeysFiltered.sort((a,b) => (a.duration > b.duration) ? 1 : ((b.duration > a.duration) ? -1 : 0))
-  console.log(this.state.journeysFiltered)
   this.setState({journeysFiltered:sortedArray})
  } 
  sortByPrice = () =>{
   let sortedArray = this.state.journeysFiltered.sort((a,b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0))
-  console.log(this.state.journeysFiltered)
   this.setState({journeysFiltered:sortedArray})
  } 
 
@@ -155,8 +143,6 @@ componentDidMount() {
 
 
   render() {
-    console.log(this.state.journeysFiltered)
-
     const funciona = this.state.userEnd==null ?(
       <p></p>
   ):(
@@ -177,11 +163,12 @@ const { enabled } = this.state;
           <div className='join-block'>
         
 
-        <div className='menu-join'>
-          <img className='join-logo' src="../../../../images/EasyGo-logo.svg" alt=""/>
-
+    
+    <div className='menu-join'>
+    <h1 style={{ color: 'white' }}>Where do you want to go ?</h1>
+    <div className='tools'>
          <div  className='userJourney'>
-       
+      
             <AutocompleteStart update={this.startInfo}/>
             <AutocompleteEnd update={this.endInfo}/>     
        
@@ -190,14 +177,14 @@ const { enabled } = this.state;
  
            <div className='filters'>
            <div className= 'toggle'>
-             <p>Filters:</p>
+             <p>Sort By:</p>
             <Toggable
               theme="default" 
               enabled={enabled}
               onStateChanged={this.toggleNotifications}
             />
             </div>
-
+  
           {enabled && (
             <div className='filters-btn'>
               <button className='filters-button' onClick={this.sortByCompany}>company</button>
@@ -210,29 +197,18 @@ const { enabled } = this.state;
           )}
         </div>  
       </div>
-
-<div clssName='journeys-map'>
+      </div>
+<div className='journeys-block'>
   {this.state.journeysFiltered.map(journey => (
   <Link className='link-style' key={journey._id} to={`/journeys/${journey._id}`}>
-    <div>
-      <div className = 'journey-target'>
-    <div className='user-journey'>
-        <img className='user-join-img' src={journey.imgPath} alt=""/>
-        <p>{journey.username}</p>
-    </div>
-      <div className='join-inf'>      
-        <h2 className='join-h2'>Travel to: {journey.company}</h2>
-        <div className='text'>
-        <div clssName='time'>
-        <p><b>Start time: </b>{journey.date}    {journey.time}</p>
-        
-        </div>
-          
-        <p><b>Price: </b>{journey.price}</p>
-        </div>
+    <div className="card">
+      <div className="card_Banner">
+        <img className='card_Avatar'src={journey.imgPath} alt=""/>
+        <h3> {journey.username}</h3>
       </div>
-
-      </div>
+      <p>Travel to: {journey.company}</p>
+      <p><b>Start time: </b>{journey.date}    {journey.time}</p>
+      <p><b>Price: </b>{journey.price}</p>
     </div>
   </Link>
 ))}
@@ -244,3 +220,5 @@ const { enabled } = this.state;
     )
   }
 }
+
+

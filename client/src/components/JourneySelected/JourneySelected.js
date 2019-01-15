@@ -44,30 +44,7 @@ export default class JourneySelected extends Component {
     }
   
 }
-// getcoorstart =()=>{
-//   if (this.state.journey.journey){
-//     return this.state.journey.journey.coorstart
-//   }
-// console.log(this.getcoorstart())
-  
-// }
 
-
-// getcoorend =()=>{
-//   if (this.state.journey.journey){
-//     return this.state.journey.journey.coorend
-//   }
-  
-// }
-// getPlaces = ( ) =>{
-//   this.state.journey.journey?(
-//     this.setState({places:this.state.journey.journey.places})
-//   ):(
-//     console.log('kjassazs')
-//   )
-// }
-
-  
     componentDidMount() {
       if (this.props.match.params.id) {
         this.getJourney(`journeys/${this.props.match.params.id}`);
@@ -93,7 +70,7 @@ this.state.journey.journey?(
  
   
   <div className='apply-journey'>
-  <Link  to='/notifications' onClick={this.applyForPlace}>apply</Link>
+  <Link  to='/profile' onClick={this.applyForPlace}>apply</Link>
   </div>
   </div>
   <div className='map-selected'>

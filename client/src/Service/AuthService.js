@@ -39,6 +39,10 @@ class AuthService {
     return this.service.get('/logout')
     .then(response => response.data);
   }
+  valuate = (data) => {
+    return this.service.post('/profile',data)
+    .then(response => response.data)
+  }
 }
 
 export default AuthService;

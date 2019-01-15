@@ -1,17 +1,13 @@
-.profile-info-cont{
-  display: flex;
-  justify-content: center;
-  box-sizing: border-box;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-}
 .user-info-container{
   width: 322px;
   height: 510px;
   background-image: url('/images/profileBack.svg');
   background: 100 100 no-repeat;
   border-radius: 10px 0 0 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 } 
 @media (min-width: 1024px) { 
   .user-info-container{
@@ -35,4 +31,15 @@
     height: 750px;
    
   } 
+}
+.user-image-profile{
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  margin-top: 3rem;
+  border: 2px solid white;
+}
+.user-name-profile{
+  color: white;
+  
 }

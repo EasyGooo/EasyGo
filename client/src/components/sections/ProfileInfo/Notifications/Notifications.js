@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
 import NotificationsService from '../../../../Service/NotificationsService.js'
 import Nav from '../../../Nav/Nav.js'
-
+import UserInfo from '../UserInfo/UserInfo.js'
+import ProfileNav from '../ProfileNav/ProfileNav.js'
 export default class Notifications extends Component {
   constructor(props) {
     super(props)
   
     this.state = {
        notifications:[],
-       newNotifications:[]
+       button:''
        
     }
     this.notificationsService = new NotificationsService();
+   
   }
   getNotifications = () =>{
     this.notificationsService.
@@ -32,18 +34,21 @@ export default class Notifications extends Component {
     )
   }
   
+  myCallFunction(){
+    [1,2,3].forEach(e => {
+      this.getNotifications()
+    })
+  }
+
+
    acceptPassenger = ( notifId,journeyId,author,receptor) =>  {
       const idNotification = notifId;
       const status = 'Accepted';
       const authorId = receptor;
       const receptorId = author;
-
-
       this.notificationsService.status({status,idNotification,journeyId,authorId,receptorId})
-      .then(console.log)
+      .then(this.myCallFunction())
   }
-
-
   //  denyPassenger = () =>  {
   //         if (this.places > 0) {
   //             this.places = (this.places) + 1
@@ -61,28 +66,26 @@ export default class Notifications extends Component {
   //     this.state.notifications.push(`${driver.name} has denied your change`)
   // }
 
+  
   componentDidMount(){
-    this.getNotifications()
-   this.paintNotifications()
+    this.getNotifications()  
   }
-
+  
   render() {
-
-   
-// const paint =
-    // this.state.notifications.length !== 0 ? 
-    // <p>{this.state.notifications.company}</p>
-    // :<p>loading..</p>
-
-
+    
+    console.log(this.state.notifications)
 
     return (
       <div>
+             <Nav />
+              <div className='profile-info-cont'>
+              <UserInfo image={this.props.getImage} name={this.props.getName}/>
+              <div className='profile-content'>
         {Array.isArray(this.state.notifications) && this.state.notifications.map((notification,i)=> {
           return (
-            <div className='notifs-block'>
-              <Nav />
 
+            <div>
+         
               {notification.type=='reqPlace' && notification.status == 'Pending'?(
                 
             <div className="Message">
@@ -94,7 +97,7 @@ export default class Notifications extends Component {
                   <button className="Message-button" key={notification._id} onClick={(e)=>this.acceptPassenger(notification._id, notification.journeyId, notification.authorId, notification.receptorId)}>Accept</button>
                   <button className="Message-button">Deny</button>
                 </div>
-                <button className="Message-close js-messageClose"><i class="fa fa-times"></i></button>
+               
             </div>
                
               ):(
@@ -110,12 +113,16 @@ export default class Notifications extends Component {
                 
                 </div>
               )}
-
-            </div>
+              </div>
+             
             )
         })}
-
+          
+              </div>  
+              <ProfileNav/>           
+       </div>     
       </div>
+      
     )
   }
 }

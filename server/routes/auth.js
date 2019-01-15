@@ -2,6 +2,7 @@ const express = require("express");
 const passport = require('passport');
 const authRoutes = express.Router();
 const User = require("../models/User");
+const Valoration = require("../models/Valoration");
 const uploadCloud = require("../config/cloudinary");
 
 // Bcrypt to encrypt passwords
@@ -33,7 +34,6 @@ authRoutes.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
   const imgPath = req.file.url;
 
   // console.log(req.file.url);
-  console.log(imgPath);
   
   if (username === "" || password === "") {
     res.status(500).json({ message: "Indicate username and password" });
@@ -115,4 +115,23 @@ authRoutes.post('/settings', (req, res, next) => {
 });
 
 
+authRoutes.post("/valoration", (req, res, next) => {
+  const { comment,rate,username,imgPath } = req.body;
+    const newValoration = new Valoration({
+      authorId,
+      username,
+      imgPath,
+      comment,
+      rate,
+    });
+    newValoration.save()
+    .then(valoration => {
+      res.status(200).json(valoration)
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({message:"Something went wrong"})
+    })
+  
+});
 module.exports = authRoutes;

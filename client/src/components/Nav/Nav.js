@@ -26,10 +26,7 @@ export default class nav extends Component {
             <span className="hamburger hamburger-3" />
           </label>
 
-          <Link to="/notifications" className="menu-item">
-            {" "}
-            <i className="fa fa-bell"></i>{" "}
-          </Link>
+         
           <Link to="/profile" className="menu-item">
             {" "}
             <i className="fa fa-user" />{" "}

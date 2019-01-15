@@ -34,17 +34,20 @@ export default class Mapas extends Component {
       map: false,
       places: 3,
       redirect: false,
-      user:null
+      user:null,
+      imgPath:'',
+      username:''
 
     };
     this.MapWithADirectionsRenderer = null
     this.map = null
     this.journeyService = new JourneyService()
     this.authService = new AuthService()
-    this.fetchUser()
+   
   }
 
   componentWillMount() {
+    this.fetchUser()
     this.map = this.createMap(this.comodin, this.state.map)();
 
    
@@ -55,7 +58,9 @@ export default class Mapas extends Component {
   fetchUser = () => {
     this.authService
       .loggedin()
-      .then(user => this.setState({ ...this.state, user }));
+      .then(user => 
+        this.setState({ ...this.state, user:user, imgPath:user.imgPath , username:user.username}))
+     
   };
 
   updateCoorstart = coorstart => {
@@ -101,6 +106,7 @@ export default class Mapas extends Component {
       withGoogleMap,
       lifecycle({
         componentDidMount() {
+        
           let google = window.google;
           if (coorend && coorstart) {
             let DirectionsService = new google.maps.DirectionsService();
@@ -212,10 +218,11 @@ export default class Mapas extends Component {
       distance,
       duration,
       coorstart,
-      coorend
+      coorend,
+      imgPath,
+      username
     } = this.state;
-    const imgPath = this.state.user.imgPath
-    const username = this.state.user.username
+
     this.journeyService.userJourneysCreate({
       company,
       places,
@@ -241,7 +248,7 @@ export default class Mapas extends Component {
   //     this.map = this.createMap(this.comodin, this.state.map)();
   // }
   render() {
-    console.log(this.state.user);
+    console.log(this.state);
     if (this.state && this.state.redirect) {
       return <Redirect to="/profile" />;
     }

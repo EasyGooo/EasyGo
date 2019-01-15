@@ -48,9 +48,15 @@ class App extends Component {
       return this.state.user.imgPath
     }
   }
+  getUserName=()=>{
+    if(this.state.user === null){
+      return 'User Name'
+    }else{
+      return this.state.user.username
+    }
+  }
 
   render() {
-console.log(this.getUserImage())
     const welcome = this.state.user ? (
       <div>
         
@@ -79,10 +85,10 @@ console.log(this.getUserImage())
           <Route path="/join" render={() => <Join getUser={this.getUser} />} />  
           <Route path="/create" render={() => <Create getUser={this.getUser}/>}/>
           <Route path="/signup" render={() => <Signup getUser={this.getUser} />}/>
-          <Route path="/profile" render={() => <ProfileInfo getImage={this.getUserImage()} />} />
+          <Route path="/profile" render={() => <ProfileInfo getImage={this.getUserImage()} getName={this.getUserName()} />} />
           <Route exact path="/journeys/:id" component={JourneySelected}/>
           <Route exact path="/journeys/:id/askstop" component={Askstop}/>
-          <Route exact path="/notifications" render={() => <Notifications getUser={this.getUser} />}/>
+          <Route exact path="/notifications" render={() => <Notifications getUser={this.getUser} getImage={this.getUserImage()} getName={this.getUserName()}/>}/>
           <Route path="/askstop" render={() => <Askstop getUser={this.getUser} />}/>
         </Switch>
   

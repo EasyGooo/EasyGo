@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import AuthService from '../../../Service/AuthService.js';
 import Nav from '../../Nav/Nav.js'
 import UserInfo from './UserInfo/UserInfo.js'
+import ProfileNav from './ProfileNav/ProfileNav.js'
+
 export default class ProfileInfo extends Component {
   constructor() {
     super();
@@ -45,23 +47,18 @@ export default class ProfileInfo extends Component {
     console.log(this.props.getImage)
     return (
       <div>
-         <Nav />
-       <div className='profile-info-cont'>
-         <UserInfo image={this.props.getImage} />
-         <form onSubmit={this.handleFormSubmit}>
-          <label>Username</label>
-          <input type="text" name="username" onChange={e => this.handleChange(e)} />
-
-          <label>Password</label>
-          <input type="password" name="password" onChange={e => this.handleChange(e)} />
-
-          <label>Email</label>
-          <input type="text" name="email" onChange={e => this.handleChange(e)} />
-
-          <input type="submit" value="Change"/>
-        </form>
-
-      </div>        
+          <Nav />
+          <div className='profile-info-cont'>
+            <UserInfo image={this.props.getImage} name={this.props.getName}/>
+            <form className='profile-content' onSubmit={this.handleFormSubmit}>
+              <h1 className='input-1' >Settings</h1>
+              <input className='change-input' placeholder='username' type="text" name="username" onChange={e => this.handleChange(e)} />
+              <input className='change-input' placeholder='password' type="password" name="password" onChange={e => this.handleChange(e)} />
+              <input className='change-input' placeholder='email' type="text" name="email" onChange={e => this.handleChange(e)} />
+              <input className='submit-changes' type="submit" value="Edit"/>
+            </form>
+            <ProfileNav/>
+          </div>        
       </div>
     )
   }

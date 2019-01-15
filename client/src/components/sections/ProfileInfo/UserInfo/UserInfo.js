@@ -5,8 +5,8 @@ export default class UserInfo extends Component {
     return (
       <div>
          <div className='user-info-container'>
-            <img src={this.props.image} alt=""/>
-            <h1></h1>
+            <img className='user-image-profile' src={this.props.image} alt=""/>
+            <h1 className='user-name-profile'>{this.props.name}</h1>
           </div>
       </div>
     )

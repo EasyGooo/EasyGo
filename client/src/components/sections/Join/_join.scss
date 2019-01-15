@@ -2,13 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 30px;
-  
-  
-}
-.logo-join{
-  width: 200px;
-  height: 200px;
+  font-size: 25px;
+  margin-left: 40px;
 }
 .join-block{
   display:flex;
@@ -18,7 +13,7 @@
   width: 80vw;
   text-align:center;
   margin: auto;
-  padding-top:500px;
+  padding: top
  
 }
 .userJourney{
@@ -30,30 +25,30 @@ justify-items: center;
   height: 100vh;
   display: flex;
   align-items: center;
+  box-sizing: border-box;
 }
 .toggle{
   display: flex;
   justify-content: center;
   align-items: center;
   text-align-last: center;
-  margin-bottom: -30px;
+ 
 }
 .toggle>p{
   margin-right: 20px;
-  margin-top: 20px;
+  margin-top: 20px
 }
-.user-join-img{
-  height: 160px;
-  width: 160px;
-}
+
 .journey-target{
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   display: flex;
   margin-top: 20px;
+  height: 166.8px;
   width: 800px;
   transition: all 3s ease-in;
-  border-radius: 80px 20px 20px 20px;
-  
+  border-radius: 80px 10px 10px 10px;
+  box-sizing: border-box;
+
 }
 .user-journey{
   display: flex;
@@ -67,17 +62,27 @@ justify-items: center;
   text-decoration: none;
 }
 .filters{
-  
   display: flex;
-  margin-top: 20px;
+  background-color: white;
+  font-size: 20px;
+  height: 50px;
+  width: 170px;
+  border-radius: 30px;
+  color: #26aef6;
+  border: 1px solid #26aef6;
 }
 .filters-btn{
   margin-bottom: 50px;
-  display: inline-block;
-  margin-top: 20px;
+  width: 360px;
+  margin-top: 80px;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  
 }
 .filters-button{
-  margin-top: -50px;
+  margin-top: 50px;
   height: 40px;
   border-radius:10px;
   width: 100px;
@@ -87,46 +92,89 @@ justify-items: center;
   font-size: 15px;
   outline: none;
   border: none;
-}
-.join-inf{
-width: 600px;
+  cursor: pointer;
 }
 
-.join-logo{
-  width: 200px;
-  height: 200px;
-  margin-top: 50px;
-  margin-bottom: 40px;
-}
-.journeys-map{
-  overflow-y: scroll;
-  height: 400px;
-  width: 500px;
-}
-.join-h2{
-  color:#5768f2
-}
 .text{
   text-align: left;
   margin-left: 80px;
   color: #26aef6;
   font-size:20px;
 }
-.text>p{
-  margin-top: -10px;
-}
+
 .time{
   display:flex;
 }
 .menu-join{
-position:fixed;
-width: 100%;
-height: 500px;
+width: 50rem;
+border-radius: 10px;
 display: flex;
 flex-direction: column;
 align-items: center;
-background-color: #FAFAFA;
-margin-top: -50px;
+align-content: center;
+background: linear-gradient(90deg, #8acdfa, #83e7f8, #98fce6);
+padding: 0 0 2rem 0 ;
 top:0;
-
+margin-top: 50px;
 }
+.tools{
+  display: flex;
+  align-items: center;
+}
+.card{
+  height: auto;
+	max-height:299px;
+  width: 23rem;
+  margin:2rem;
+	overflow: hidden;
+	background-color: #FFFFFF;
+	border-radius: 10px;
+	box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+	text-align: center;
+	-webkit-transition: .1s ease-in-out;
+	transition: .1s ease-in-out;
+}
+
+
+.card:hover{
+  margin-top: -25px;
+  margin-bottom: 25px;
+  position:relative;
+	box-shadow: 0 15px 20px rgba(0,0,0,0.1);
+	}
+
+.card_Banner{
+	height: 120px;
+	width: inherit;
+	padding: 10px 0 10px 0;
+	background-color: #FAFAFA;
+	background-size: cover;
+	background-position: center;
+  background:#8acdfa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+	}
+
+.card_Avatar{
+	height: 100px;
+	width: 100px;
+  margin-bottom: -18px;
+	background-size: cover;
+	background-position: center;
+	background-color: #F1F1F1;
+	border: 3px solid #FFFFFF;
+	border-radius: 100%;
+	box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+	}
+
+
+
+  .journeys-block{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    width: 70vw;
+    justify-content: flex-start;
+  }
