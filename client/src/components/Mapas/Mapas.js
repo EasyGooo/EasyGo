@@ -7,13 +7,12 @@ import {
   DirectionsRenderer,
   withGoogleMap,
   GoogleMap,
-  Marker
+
 } from "react-google-maps";
 import { Redirect } from "react-router-dom";
 
 import AutocompleteStart from "./AutocompleteStart";
 import AutocompleteEnd from "./AutocompleteEnd";
-import AutocompleteAsked from "./AutocompleteAsked";
 import companies from "../../companies.json";
 import startpoints from "../../startpoints.json";
 const { compose, withProps, lifecycle } = require("recompose");

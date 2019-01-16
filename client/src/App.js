@@ -13,6 +13,8 @@ import JourneySelected from './components/JourneySelected/JourneySelected.js';
 import Create from './components/sections/Create/Create.js';
 import LoginSignup from './components/sections/LoginSignup/LoginSignup.js';
 import Notifications from './components/sections/ProfileInfo/Notifications/Notifications.js';
+import Valorations from './components/sections/ProfileInfo/Valorations/Valorations.js';
+import Trips from './components/sections/ProfileInfo/Trips/Trips.js';
 
 class App extends Component {
   constructor() {
@@ -89,6 +91,8 @@ class App extends Component {
           <Route exact path="/journeys/:id" component={JourneySelected}/>
           <Route exact path="/journeys/:id/askstop" component={Askstop}/>
           <Route exact path="/notifications" render={() => <Notifications getUser={this.getUser} getImage={this.getUserImage()} getName={this.getUserName()}/>}/>
+          <Route exact path="/opinions" render={() => <Valorations getUser={this.getUser} getImage={this.getUserImage()} getName={this.getUserName()}/>}/>
+          <Route exact path="/trips" render={() => <Trips getUser={this.getUser}  getImage={this.getUserImage()} getName={this.getUserName()} />}/>
           <Route path="/askstop" render={() => <Askstop getUser={this.getUser} />}/>
         </Switch>
   

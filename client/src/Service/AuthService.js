@@ -39,8 +39,12 @@ class AuthService {
     return this.service.get('/logout')
     .then(response => response.data);
   }
-  valuate = (data) => {
-    return this.service.post('/profile',data)
+  valorate = (data) => {
+    return this.service.post('/valoration',data)
+    .then(response => response.data)
+  }
+  getValorations=()=>{
+    return this.service.get('/valorationslist')
     .then(response => response.data)
   }
 }

@@ -2,7 +2,6 @@ const express = require("express");
 const journeysRoutes = express.Router();
 const Journey = require("../models/Journey");
 const User = require("../models/User");
-const Company = require("../models/Company");
 
 journeysRoutes.get('/journeys' ,(req,res,next)=>{
   Journey.find()
@@ -32,7 +31,6 @@ journeysRoutes.get('/myjourneys', (req, res, next) => {
   });
 
 journeysRoutes.post("/create",(req, res, next) => {
-  console.log(req.body.price)
   const {coorstart,coorend,company,places,date,time,description,distance,price,duration,username,imgPath}=req.body;
   
   const newJourney = new Journey({

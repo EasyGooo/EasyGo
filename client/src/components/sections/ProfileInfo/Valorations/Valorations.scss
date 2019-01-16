@@ -1,0 +1,140 @@
+.emojis{
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+ 
+}
+.rate-button{
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 100%;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: center; 
+  cursor: pointer;
+  outline: none;
+  margin: 0.3rem;
+  transition: 100ms ease-out;
+
+}
+.rate-button:hover{
+  width: 57px;
+  height: 57px;
+  transition: 100ms ease-in
+
+}
+.emojis-container{
+  display: flex;
+  height: 60px;
+  align-items: center;
+}
+.valoration-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+.none{
+  display: none
+}
+.valoration-img{	
+  height: 70px;
+  width: 70px;
+  background-color: #F1F1F1;
+  border: 3px solid #FFFFFF;
+  border-radius: 100%;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+}
+.emoji-img{
+  width: 40px;
+  height: 40px;
+}
+.valoration-container{
+  background-color: #FAFAFA;
+  margin: 1rem;
+  display: flex;
+  box-shadow: 0 5px 5px rgba(0,0,0,0.05);
+  border-radius: 10px;
+  align-items: center;
+  height: auto;
+  padding: 0;
+
+}
+.scroll-div{
+  overflow-y: auto;
+  height:500px; 
+  width: 500px;
+  margin-top: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 5px rgba(0,0,0,0.1);
+  background-color: #E7F5FD;
+}
+.valoration-text{
+  width: 280px;
+  height: auto;
+  margin: 0;
+  margin-top: 20px;
+}
+.valoration-name{
+  margin: 0;
+  font-size: 25px;
+  font-weight: bold;
+  color:#8ACDFA;
+
+}
+.valoration-info{
+  display: flex;
+  flex-direction: column;
+  
+}
+
+//#8ACDFA
+//#FAFAFA
+.submit-valoration{
+  text-decoration: none;
+  background-color: #26aef6;
+  color:white;
+  text-align: center;
+  width: 50%;
+  height: 40px;
+  line-height: 30px;
+  border-radius: 25px;
+  font-size: 15px;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  transition: 100ms ease-out;
+  outline:none;
+}
+.submit-valoration:hover{
+  transition: 100ms ease-in;
+  background-color: white;;
+  border: 1px solid #26aef6;
+  color: #26aef6;
+}
+.valoration-input{
+  border: none;
+  color: #008cff;
+  width: 30rem;
+  height: 90px;
+  font-size: 20px;
+  padding: 10px;
+  outline: none;
+  border-radius: 10px;
+  background-color:#e8f5fd;
+  
+
+}
+.banner-img{
+  background-color: #8ACDFA;
+  height: inherit;
+  width: 100px;
+  margin:10px; 
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

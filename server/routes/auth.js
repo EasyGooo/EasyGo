@@ -117,8 +117,9 @@ authRoutes.post('/settings', (req, res, next) => {
 
 authRoutes.post("/valoration", (req, res, next) => {
   const { comment,rate,username,imgPath } = req.body;
+
     const newValoration = new Valoration({
-      authorId,
+      authorId:req.user.id,
       username,
       imgPath,
       comment,
@@ -133,5 +134,12 @@ authRoutes.post("/valoration", (req, res, next) => {
       res.status(500).json({message:"Something went wrong"})
     })
   
+});
+
+authRoutes.get('/valorationslist' ,(req,res,next)=>{
+  Valoration.find()
+  .then(valorations=>{
+    res.json(valorations)
+  })
 });
 module.exports = authRoutes;

@@ -61,48 +61,6 @@ filterByDistance = ()=>{
   })}
 }
 
-
-
-
-// wantToJoinAddingStop = () =>{
-//   let pointInTheWay=this.routes[0].overview_path;
-//   console.log(pointInTheWay)
-  
-//   this.state.journeys.forEach((e)=>{
-//     pointInTheWay.forEach(point => {
-//       // point.lat(), pont.lng();
-//       console.log("entra")
-//       console.log(point.lat())
-//       if ((e.coordend.lat < (this.state.userEnd.lat + 0.01) && (e.coordend.lat > (this.state.userEnd.lat - 0.01))) && ((e.coordend.lng < (this.state.userEnd.lng + 0.01))
-//       &&(e.coordend.lng > (this.state.userEnd.lng - 0.01)))
-//       &&  ((point.lat() < (this.state.coorAsked.lat + 0.01) && (point.lat() > (this.state.coorAsked.lat - 0.01))) && ((point.lng() < (this.state.coorAsked.lng + 0.01))
-//       &&(point.lng() > (this.state.coorAsked.lng - 0.01))))) {
-//         this.state.journeysCloseToMyStartPoint.push(e)
-//       }console.log(this.state.journeysCloseToMyStartPoint)
-//     })
-//   })
-// }
-
-// getDistance =() =>{
-//   let DirectionsService = new window.google.maps.DirectionsService();
-//   this.state.journeys.forEach((e)=>{
-//   // let pointInTheWaylat=this.routes[0].overview_path[0].lat();
-//   // let pointInTheWaylng=this.routes[0].overview_path[0].lng();
-//   if (this.coorAsked){
-//   DirectionsService.route(
-//     {
-//       origin: new window.google.maps.LatLng(this.coorAsked.lat,this.coorAsked.lng),
-//       destination: new window.google.maps.LatLng(e.this.routes[0].overview_path[0].lat(),e.this.routes[0].overview_path[0].lng()),
-//       travelMode: window.google.maps.TravelMode.WALKING,
-//     },(result, status) => {
-//       console.log(result)
-//     })
-//   }
-//     console.log(DirectionsService)
-// })}
-
-
-
 sortByDate = () =>{
   let sortedArray = this.state.journeysFiltered.sort((a,b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0))
   console.log(this.state.journeysFiltered)
