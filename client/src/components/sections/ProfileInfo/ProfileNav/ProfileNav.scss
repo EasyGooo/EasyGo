@@ -10,12 +10,14 @@
   margin-left: -30px;
   font-size: 28px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  z-index: 3;
 }
 .profile-links{
   margin: 1.3rem;
   color:white;
   height: 50px;
   text-decoration: none;
+  z-index: 3;
 }
 .profile-links:hover{
   margin-left: -70px;

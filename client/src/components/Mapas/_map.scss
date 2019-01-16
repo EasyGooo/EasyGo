@@ -34,6 +34,7 @@ body{
 .inputs{
   display:flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .autocomplete-dropdown-container{
@@ -149,7 +150,7 @@ color: #26aef6;
   font-size: 20px;
   padding: 10px;
   outline: none;
-  margin: 2rem 0 2rem 0;
+  margin-bottom:2rem;
   border-radius: 10px;
   background-color:#e8f5fd;
 

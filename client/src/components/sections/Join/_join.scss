@@ -9,6 +9,7 @@
   display:flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
   height: 100vh;
   width: 80vw;
   text-align:center;
@@ -114,7 +115,6 @@ align-items: center;
 align-content: center;
 background: linear-gradient(90deg, #8acdfa, #83e7f8, #98fce6);
 padding: 0 0 2rem 0 ;
-top:0;
 margin-top: 50px;
 }
 .tools{
@@ -124,8 +124,8 @@ margin-top: 50px;
 .card{
   height: auto;
 	max-height:299px;
-  width: 23rem;
-  margin:2rem;
+  width: 22rem;
+  margin:1rem;
 	overflow: hidden;
 	background-color: #FFFFFF;
 	border-radius: 10px;
@@ -175,6 +175,11 @@ margin-top: 50px;
     display: flex;
     flex-wrap: wrap;
     align-content: center;
-    width: 70vw;
+    width: 50rem;
+    padding: 250px 1rem 1rem 1rem;
     justify-content: flex-start;
+    box-sizing: border-box;
+    height: 700px;
+    overflow-y: auto;
+   
   }

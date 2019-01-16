@@ -20,19 +20,7 @@ export default class Notifications extends Component {
     getNotifications()
     .then(data=>this.setState({ notifications:data }))
   }
-  paintNotifications = () =>{
-    let array = []
-    this.state.notifications?(
-      
-      this.state.notifications.forEach(e => {
-        array.push(e)
-        this.setState({newNotifications: array})
-      })
-       
-    ):(
-      console.log('not found')
-    )
-  }
+ 
   
   myCallFunction(){
     [1,2,3].forEach(e => {

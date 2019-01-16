@@ -1,0 +1,48 @@
+.journeys-active-container{
+  overflow-y: auto;
+  height:500px; 
+  margin-top: 0.8rem;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+.journey-active-card{
+  width: 400px;
+  height: 120px;
+  border-radius:  60px 0 0 60px;
+  box-shadow: 0 5px 5px rgba(0,0,0,0.05);
+  margin: 1rem auto;
+  color:#84C4EF;
+  display: flex;
+  background-color: white;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.location{
+  height: 120px;
+  width: 120px;
+}
+.start-time{
+  height: 120px;
+  width: 100px;
+  margin-top: -1.5px;
+  text-align: center;
+  border-radius: 0 10px 10px 0;
+}
+.start-time>div>p{
+  margin: 0;
+}
+.start-time-block{
+  height: 59px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: solid 1px #E7F5FD;
+}
+.trips-h1{
+  color:#0081FF;
+  margin-top: 50px;
+}

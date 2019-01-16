@@ -23,7 +23,7 @@ Journey.findById(req.params.id)
 
 
 journeysRoutes.get('/myjourneys', (req, res, next) => {
-  Journey.findOne({authorId: req.user.id})
+  Journey.find({authorId: req.user.id})
   .then(journeys=>{
     res.json({journeys})
   })

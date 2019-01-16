@@ -7,8 +7,7 @@ class JourneyService{
       withCredentials: true
     })
   }
-  
-  
+   
   companies = () => {
     return this.service.get('/companies')
     .then(response => response.data)
@@ -21,15 +20,9 @@ class JourneyService{
     return this.service.post('/create',data)
     .then(response => response.data)
   }
-  // userJourneysAskstop= (data) => {
-  //   return this.service.get('/journeys/:id',data)
-  //   .then(response => response.data)
-  // }
-  
-  userCars = ()=> {
-    return this.service.post('/journeys/car')
+  myjourneys=()=>{
+    return this.service.get('/myjourneys')
     .then(response => response.data)
   }
-
 }
 export default JourneyService;
